@@ -6,20 +6,29 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Document
     body
+        include utils.pug
+        +validationErrorSummary(errors)
         form(action="signup" method="post")
-         input(type='hidden' name='_csrf' value=csrfToken)
-         label(for="name") Name:
-         input(type='text' name="Name")
-         label(for="email") Email:
-         input(type="email" name="Email")
-         label(for="biography") Biography:
-         textarea(name="Biography")
-         label(for="profession") Profession:
-         input(type="text" name="Profession")
-         label(for="ProfilePic") Profile Photo Link:
-         input(type="text" name="ProfilePic")
-         label(for="password") Password:
-         input(type="password" name="Password")
-         label(for="confirmedPassword") Confirm Password:
-         input(type="password" name="confirmedPassword")
-         input(type='submit' value='Create User')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            label(for="name") Name:
+            input(type='text' name="name")
+            br
+            label(for="email") Email:
+            input(type="email" name="email")
+            br
+            label(for="biography") Biography:
+            textarea(name="biography")
+            br
+            label(for="profession") Profession:
+            input(type="text" name="profession")
+            br
+            label(for="profilePhoto") Profile Photo Link:
+            input(type="text" name="profilePhoto")
+            br
+            label(for="password") Password:
+            input(type="password" name="password")
+            br
+            label(for="confirmedPassword") Confirm Password:
+            input(type="password" name="confirmedPassword")
+            br
+            input(type='submit' value='Create User')
