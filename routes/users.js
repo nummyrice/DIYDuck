@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs')
 const db = require('../db/models')
 //const { loginUser, logoutUser} = require('../auth')
 
-
+//this is to make the branch
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
