@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+    body
+        form(action="signup" method="post")
+         input(type='hidden' name='_csrf' value=csrfToken)
+         label(for="name") Name:
+         input(type='text' name="Name")
+         label(for="email") Email:
+         input(type="email" name="Email")
+         label(for="biography") Biography:
+         textarea(name="Biography")
+         label(for="profession") Profession:
+         input(type="text" name="Profession")
+         label(for="ProfilePic") Profile Photo Link:
+         input(type="text" name="ProfilePic")
+         label(for="password") Password:
+         input(type="password" name="Password")
+         label(for="confirmedPassword") Confirm Password:
+         input(type="password" name="confirmedPassword")
+         input(type='submit' value='Create User')
