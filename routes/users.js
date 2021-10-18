@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const session =  require('express-session');
 const { csrfProtection, asyncHandler } = require('./utils.js');
 const {check, validationResult} = require('express-validator')
 const bcrypt = require('bcryptjs')
 const db = require('../db/models');
 const {User} = db;
-//const { loginUser, logoutUser} = require('../auth')
+const { loginUser, logoutUser} = require('../auth')
 
 router.get('/signup', csrfProtection, (req, res) => {
   const user = db.User.build();
@@ -89,7 +88,7 @@ router.post('/signup', csrfProtection, userValidators,
       const hashedPassword = await bcrypt.hash(password, 10);
       user.hashedPassword = hashedPassword;
       await user.save();
-      //loginUser(req, res, user);
+      loginUser(req, res, user);
       res.redirect('/');
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
@@ -116,7 +115,7 @@ const loginValidators = [
     .withMessage('Please provide a value for Password'),
 ];
 
-router.post('/login', csrfProtection, loginValidators, asyncHandler((req, res) => {
+router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   let errors = [];
@@ -145,13 +144,18 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler((req, res) =
       errors = validatorErrors.array().map((error) => error.msg);
     }
 
-    res.render('user-login', {
+    res.render('login', {
       title: 'Login',
       email,
       errors,
       csrfToken: req.csrfToken(),
     });
 }))
+
+router.post('/logout', (req, res) => {
+  logoutUser(req, res);
+  res.redirect('/');
+})
 
 
 module.exports = router;
