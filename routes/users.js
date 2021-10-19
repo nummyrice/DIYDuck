@@ -133,7 +133,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
         if (passwordMatch) {
           // If the password hashes match, then login the user
           // and redirect them to the default route.
-          // loginUser(req, res, user);
+          loginUser(req, res, user);
           return res.redirect('/');
         }
       }
@@ -156,6 +156,12 @@ router.post('/logout', (req, res) => {
   logoutUser(req, res);
   res.redirect('/');
 })
+
+/*
+--create handler for user/:id
+--display user bio info if applicable
+--
+*/
 
 
 module.exports = router;
