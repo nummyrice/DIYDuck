@@ -1,0 +1,13 @@
+extends layout.pug
+    div
+        div
+            img(src=user.profilePhoto)
+        div
+
+
+    //- photo
+    //- name
+    //-profession
+    //-biography
+    each question in questions
+        +UserQuestion(question, user, likes)
