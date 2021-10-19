@@ -5,3 +5,29 @@ mixin validationErrorSummary(errors)
       ul
         each error in errors
           li= error
+
+mixin usersQuestion(question, user, likes)
+  div
+    div
+      div
+        img(src=user.profilePhoto)
+      div
+        div
+          span=user.name
+        div
+          div
+            span=user.profession
+          div
+            dateCreated
+    div
+      span=questions.title
+    div
+      p=question.content
+    div
+      div
+        div
+          button(type="button") Like!
+        div
+          span=likes
+      div
+        button(type="button") Answer!

@@ -7,6 +7,7 @@ const db = require('../db/models');
 const {User} = db;
 const { loginUser, logoutUser} = require('../auth')
 
+/* GET SIGNUP FORM */
 router.get('/signup', csrfProtection, (req, res) => {
   const user = db.User.build();
   res.render("sign-up-form", {
@@ -57,6 +58,9 @@ const userValidators = [
     }),
 ];
 
+
+
+/* SUBMIT SIGNUP FORM */
 router.post('/signup', csrfProtection, userValidators,
   asyncHandler(async (req, res) => {
 
@@ -160,7 +164,7 @@ router.post('/logout', (req, res) => {
 /*
 --create handler for user/:id
 --display user bio info if applicable
---
+--display frequently used question
 */
 
 
