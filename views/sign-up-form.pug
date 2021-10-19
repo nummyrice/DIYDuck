@@ -1,34 +1,36 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Document
-    body
-        include utils.pug
-        +validationErrorSummary(errors)
-        form(action="signup" method="post")
-            input(type='hidden' name='_csrf' value=csrfToken)
-            label(for="name") Name:
-            input(type='text' name="name")
-            br
-            label(for="email") Email:
-            input(type="email" name="email")
-            br
-            label(for="biography") Biography:
-            textarea(name="biography")
-            br
-            label(for="profession") Profession:
-            input(type="text" name="profession")
-            br
-            label(for="profilePhoto") Profile Photo Link:
-            input(type="text" name="profilePhoto")
-            br
-            label(for="password") Password:
-            input(type="password" name="password")
-            br
-            label(for="confirmedPassword") Confirm Password:
-            input(type="password" name="confirmedPassword")
-            br
-            input(type='submit' value='Create User')
+extends layout
+
+include utils.pug
+
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/signup.css")
+block content
+    h1 Sign Up
+    p Please fill in the required details to create an account.
+    +validationErrorSummary(errors)
+    div()
+    form(class='signUpForm' action="signup" method="post")
+        input(type='hidden' name='_csrf' value=csrfToken)
+        label(for="name") Name:
+        input(type='text' name="name")
+        br
+        label(for="email") Email:
+        input(type="email" name="email" placeholder="eg: abc@email.com")
+        br
+        label(for="biography") Biography:
+        textarea(name="biography")
+        br
+        label(for="profession") Profession:
+        input(type="text" name="profession")
+        br
+        label(for="profilePhoto") Profile Photo Link:
+        input(type="text" name="profilePhoto")
+        br
+        label(for="password") Password:
+        input(type="password" name="password")
+        br
+        label(for="confirmedPassword") Confirm Password:
+        input(type="password" name="confirmedPassword")
+        br
+        input(class="createUser" type='submit' value='Create User')
