@@ -4,7 +4,6 @@ const { csrfProtection, asyncHandler } = require('./utils.js');
 const {check, validationResult} = require('express-validator')
 const bcrypt = require('bcryptjs')
 const db = require('../db/models');
-const {User} = db;
 const { loginUser, logoutUser} = require('../auth')
 
 /* GET SIGNUP FORM */
@@ -160,6 +159,20 @@ router.post('/logout', (req, res) => {
   logoutUser(req, res);
   res.redirect('/');
 })
+
+router.get('/users/:id(\\d+)', asyncHandler(async (req,res) => {
+  const userId = req.params.id
+  const user = await db.User.findByPk(userId)
+  res.render('profile', { user })
+}))
+
+router.post('/users/delete',asyncHandler(async (req,res) => {
+    const { userId } = req.body
+    const user = await db.User.findByPk(userId)
+    await user.destroy()
+    res.redirect('/');
+}))
+
 
 /*
 --create handler for user/:id

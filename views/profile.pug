@@ -1,13 +1,29 @@
 extends layout.pug
-    div
+
+block content
+    head
+        link(rel='stylesheet' href='/stylesheets/user.css')
+    body
         div
-            img(src=user.profilePhoto)
-        div
+            div
+                if user
+                    img(src=(user.profilePhoto || 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png') style='width:75px; height:75px;')
+
+                    div
+                        span(class='userName')=user.name
+                    div
+                        span=user.profession
+                    div
+                        span=user.biography
+                    div
+                        form(action="/users/delete" method="POST")
+                            input(type='hidden' value=user.id name='userId')
+                            button(type='submit' class='deleteButton') Delete Account
 
 
-    //- photo
-    //- name
-    //-profession
-    //-biography
-    each question in questions
-        +UserQuestion(question, user, likes)
+    //- photo done
+    //- name done
+    //-profession done
+    //-biography done
+    //- each question in questions
+    //-     +UserQuestion(question, user, likes)
