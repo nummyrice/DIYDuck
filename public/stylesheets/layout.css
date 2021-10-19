@@ -1,0 +1,89 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
+body, header, nav {
+  font-size: 1rem;
+  color: inherit;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+.navBar {
+  background-color:#edf3f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 100px;
+  height: 50px;
+}
+
+/* .logo */
+.searchBar{
+  height: 30px;
+  width: 300px;
+  border-radius: 3em;
+}
+
+::placeholder {
+  margin-left: 10px;
+}
+
+.welcome{
+  color:#b92b27;
+  font-weight: bolder;
+  font-size:larger;
+}
+
+.logoutButton{
+background-color:#b92b27;
+color:white;
+font-weight: bolder;
+padding:10px;
+border-radius: 1em;
+}
+
+.login {
+box-sizing: border-box;
+line-height: 1;
+background-color:#b92b27;
+color:white;
+font-weight: bolder;
+padding:10px;
+border-radius: 1em;
+}
+
+.signup {
+box-sizing: border-box;
+line-height: 1;
+background-color:#b92b27;
+color:white;
+font-weight: bolder;
+padding:10px;
+border-radius: 1em;
+}
+
+.questionButton {
+  background-color:#b92b27;
+  color:white;
+  font-weight: bolder;
+  padding:10px;
+  border-radius: 1em;
+}
