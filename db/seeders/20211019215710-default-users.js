@@ -9,10 +9,33 @@ module.exports = {
       Example:
       */
    return queryInterface.bulkInsert('Users', [{
-     name: 'Nick',
+     name: 'Rich',
      email: 'happy@happy.com',
-     hashedPassword: 'example'
-   }], {});
+     hashedPassword: 'Example1!',
+     biography: 'Hello, this is Rich',
+     profilePhoto: 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png',
+     profession: 'Business',
+     createdAt: new Date(),
+     updatedAt: new Date(),
+   }, {
+    name: 'PrincessPeach',
+    email: 'toadstool@kingdom.com',
+    hashedPassword: 'Example2!',
+    biography: 'Hello, this is Peach',
+    profilePhoto: 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png',
+    profession: 'Princess',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  }, {
+    name: 'Jerry',
+    email: 'jerry@springer.com',
+    hashedPassword: 'Example3!',
+    biography: 'Hello, this is Jerry',
+    profilePhoto: 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png',
+    profession: 'Gardener',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  }], {});
   },
 
   down: (queryInterface, Sequelize) => {
