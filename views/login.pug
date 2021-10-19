@@ -7,6 +7,7 @@ html(lang="en")
         title Document
     body
         form(action="/login" method="POST")
+            input(type='hidden' name='_csrf' value=csrfToken)
             div
                 label(for="email") Email
                 input(type="email" name="email" required=true)

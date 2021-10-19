@@ -88,7 +88,7 @@ router.post('/signup', csrfProtection, userValidators,
       const hashedPassword = await bcrypt.hash(password, 10);
       user.hashedPassword = hashedPassword;
       await user.save();
-      loginUser(req, res, user);
+      //loginUser(req, res, user);
       res.redirect('/');
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
@@ -133,7 +133,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
         if (passwordMatch) {
           // If the password hashes match, then login the user
           // and redirect them to the default route.
-          // loginUser(req, res, user);
+          loginUser(req, res, user);
           return res.redirect('/');
         }
       }
