@@ -10,15 +10,21 @@ module.exports = {
       },
       answer: {
         allowNull: false,
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT(2000)
       },
       questionId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Questions',
+        }
       },
       userId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+        }
       },
       createdAt: {
         allowNull: false,
