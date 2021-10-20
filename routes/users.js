@@ -8,10 +8,8 @@ const { loginUser, logoutUser} = require('../auth')
 
 /* GET SIGNUP FORM */
 router.get('/signup', csrfProtection, (req, res) => {
-  const user = db.User.build();
   res.render("sign-up-form", {
     title: "Sign Up",
-    user,
     csrfToken: req.csrfToken()
   })
 })
