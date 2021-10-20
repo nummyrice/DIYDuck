@@ -158,3 +158,10 @@ input{
   padding: 1em;
   margin: 10px;
 }
+
+.categorySelector{
+  width: 300px;
+  height: 40px;
+  font-size: medium;
+  margin: 10px;
+}

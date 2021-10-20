@@ -12,14 +12,15 @@ router.post('/new',csrfProtection, asyncHandler(async (req, res) => {
 
   const {
     title,
-    content
+    content,
+    categoryId,
   } = req.body;
 
-  const question = db.Question.create({
+  const question = await db.Question.create({
     title : title,
     content : content,
     userId : res.locals.user.id,
-    categoryId:1
+    categoryId: categoryId
   });
     res.redirect('/');
 }));
