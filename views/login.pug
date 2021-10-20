@@ -1,20 +1,24 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title=title
-    body
-        form(action="/login" method="POST")
-            input(type='hidden' name='_csrf' value=csrfToken)
-            div
-                label(for="email") Email
-                input(type="email" name="email" required=true)
-            div
-                label(for="password") Password
-                input(type="password" name="password" required=true)
-            div
-                button(type="submit") login
-            div
-                a(href="/signup") Sign up!
+
+
+extends layout
+
+include utils.pug
+
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/login.css")
+block content
+    h1 LogIn
+    +validationErrorSummary(errors)
+    div()
+    form(class="loginForm" action="/login" method="POST")
+        input(type='hidden' name='_csrf' value=csrfToken)
+        div
+            label(for="email") Email
+            input(type="email" name="email" required=true)
+        div
+            label(for="password") Password
+            input(type="text" name="password" required=true)
+        div
+            button(class="loginButton" type="submit") Submit
+        
