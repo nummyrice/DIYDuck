@@ -10,18 +10,6 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-
-  h1= title
-  each question in questions
-    +usersQuestion(question, user, likes)
-  div
-    a(href="/signup") Sign Up!
-  div
-    a(href="/login") Log In
-  div
-    form( method='POST' action='/logout')
-      button(typr='submit') Logout
-
   div(class="home-container")
     div(class="categories")
       div(class="cat_label") Categories
@@ -35,13 +23,8 @@ block content
       a(class="painting" href='/') Painting
     div(class="questions")
       div(class="q_label") Questions
-      span(class="posted-q")
-        div(class="name") Name
-        div(class="profession") Profession
-        div(class="question") insert question here
-        div(class="question_buttons")
-          i(class="far fa-heart")
-          i(class="far fa-comment")
+      each question in questions
+        +usersQuestion(question)
     div(class="tbd")
       div(class="tbd_label") TBD
 
@@ -50,3 +33,4 @@ block content
 //- Need to make correct href links once the database for categories is created and seeded
 //- Not sure if we can put in anything in the questions section until the DB is seeded
 //- Should we do an infinite scroll, or would that not be necessary unless we have extra time?
+//- query for likes and display like quantity
