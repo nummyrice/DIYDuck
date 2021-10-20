@@ -10,8 +10,8 @@ append head
 
 block content
   h1= title
-  //--each question in questions
-    //--+usersQuestion(question, user, likes)
+  each question in questions
+    +usersQuestion(question, user, likes)
   div
     a(href="/signup") Sign Up!
   div
