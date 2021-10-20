@@ -96,3 +96,67 @@ border-radius: 1em;
   padding:10px;
   border-radius: 1em;
 }
+
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelButton,.submitButton {
+  display: inline-block;
+  padding: 14px 20px;
+  background-color:#b92b27;
+  margin: 10px;
+  color:white;
+  font-weight: bolder;
+  border-radius: 1em;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /*Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: -1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #929397;
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid rgb(209, 204, 204);
+  width: 30%; /* Could be more or less, depending on screen size */
+}
+
+
+
+/* Clear floats */
+.eraser {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+label {
+  display: inline-block;
+  width: 300px;
+  text-align: left;
+  font-weight: bold;
+  font-size:20px;
+}
+
+input{
+  width: 500px;
+  box-sizing:border-box;
+  border: 1px solid #999;
+  padding: 1em;
+  margin: 10px;
+}
