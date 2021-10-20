@@ -1,6 +1,60 @@
-body{
-  background-color: gainsboro;
+.divContainer{
+  display: flex;
+  height: 100vh;
+  width:100vw;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profilePicture{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.userName{
+  font-size: 75px;
+  font-family:Arial, Helvetica, sans-serif ;
+  text-align: center;
+}
+
+.profession{
+  font-size: 15px;
+  font-family:Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.bio{
+  text-align: center;
+}
+
+.questionsContainer{
+  justify-content: center;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  width: 500px;
+  height: 100%;
+  text-align: center;
+  overflow-y: scroll;
+}
+
+.deleteButton{
+  background-color: red;
+  text-align: center;
+  color: white;
+  justify-content: center;
+}
+
+.deleteForm{
   display: flex;
   justify-content: center;
-  padding: 15px;
+}
+
+.singleQuestion{
+  justify-content: center;
+  border-radius: 25px;
+  border: 2px solid black;
+  padding: 20px;
+  text-align: center;
 }

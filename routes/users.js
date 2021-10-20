@@ -179,11 +179,5 @@ router.post('/users/delete',asyncHandler(async (req,res) => {
 }))
 
 
-/*
---create handler for user/:id
---display user bio info if applicable
---display frequently used question
-*/
-
 
 module.exports = router;
