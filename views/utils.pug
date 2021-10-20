@@ -6,6 +6,10 @@ mixin validationErrorSummary(errors)
         each error in errors
           li= error
 
+
+mixin generateCategories(category)
+  a(class='categoryName' href=`/categories/${category.id}`) #{category.name}
+
 mixin usersQuestion(question)
   div(class="posted-q")
     div(class="q_header")
@@ -20,3 +24,4 @@ mixin usersQuestion(question)
     div(class="question_buttons")
       i(class="far fa-heart")
       i(class="far fa-comment")
+

@@ -20,6 +20,7 @@
     border: solid 1px #c3c8ca;
     align-self: start;
 }
+
 .cat_label{
     margin-bottom: 20px;
     font-weight: bold;
@@ -52,7 +53,6 @@
     padding: 15px;
 
 }
-
 /* Question Header Styling */
 
 .q_profile_photo {
@@ -103,6 +103,7 @@
     align-items: end;
 
 }
+
 
 /* Question Title Styling*/
 

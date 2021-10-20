@@ -12,6 +12,7 @@ const usersRouter = require('./routes/users');
 const questionRouter = require('./routes/question')
 const categoryRouter = require('./routes/categories')
 const { restoreUser } = require('./auth');
+const categoryRouter = require('./routes/categories')
 
 
 const { sessionSecret } = require('./config')

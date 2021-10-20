@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    categoryId: DataTypes.INTEGER
+    categoryId: {type: DataTypes.INTEGER,
+    allowNull: false}
   }, {});
   Question.associate = function(models) {
     // associations can be defined here
@@ -27,8 +28,8 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
       hooks: true
     });
-    Question.hasOne(models.Category, {
-      as: 'category',
+    Question.belongsTo(models.Category, {
+//       as: 'categories',
       foreignKey: 'categoryId',
     })
   };

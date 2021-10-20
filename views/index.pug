@@ -1,4 +1,5 @@
 extends layout
+include utils.pug
 
 include utils.pug
 
@@ -13,14 +14,8 @@ block content
   div(class="home-container")
     div(class="categories")
       div(class="cat_label") Categories
-      a(class='knitting' href='/') Knitting
-      a(class="woodworking" href='/') Woodworking
-      a(class="drawing" href='/') Drawing
-      a(class="sculpture" href='/') Sculpture
-      a(class='3dprinting' href='/') 3D Printing
-      a(class='calligraphy' href='/') Calligraphy
-      a(class="sewing" href='/') Sewing
-      a(class="painting" href='/') Painting
+      each category in categories
+        +generateCategories(category)
     div(class="questions")
       div(class="q_label") Questions
         each question in questions
