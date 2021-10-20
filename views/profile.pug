@@ -16,6 +16,11 @@ block content
                     div
                         span=user.biography
                     div
+                        h1=Questions
+                        each question in userQuestions
+                            h2=question.title
+                            p=question.content
+                    div
                         form(action="/users/delete" method="POST")
                             input(type='hidden' value=user.id name='userId')
                             button(type='submit' class='deleteButton') Delete Account

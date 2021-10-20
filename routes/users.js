@@ -163,7 +163,12 @@ router.post('/logout', (req, res) => {
 router.get('/users/:id(\\d+)', asyncHandler(async (req,res) => {
   const userId = req.params.id
   const user = await db.User.findByPk(userId)
-  res.render('profile', { user })
+  const userQuestions = await db.Question.findAll({
+    where: {
+      userId: userId
+    }
+  })
+  res.render('profile', { user, userQuestions })
 }))
 
 router.post('/users/delete',asyncHandler(async (req,res) => {

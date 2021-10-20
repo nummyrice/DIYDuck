@@ -15,6 +15,8 @@ html
             button(class='logoutButton' type='submit') Logout
           form(class='addQuestion' action='/questions/new')
             button(id='queMdl' class='questionButton' type='submit') Add Question
+          form(class='account' action='/users/#{user.id}' method='get')
+            button(id='accountButton' type='submit') Account
       else
           span(class='loginSignUp')
           form(class='demo' action='/login' method='post')
