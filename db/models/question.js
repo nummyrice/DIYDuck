@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    categoryId: DataTypes.INTEGER
+    categoryId: {type: DataTypes.INTEGER,
+    allowNull: false}
   }, {});
   Question.associate = function(models) {
     // associations can be defined here
@@ -28,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       hooks: true
     });
     Question.belongsTo(models.Category, {
-      as: 'categories',
+//       as: 'categories',
       foreignKey: 'categoryId',
     })
   };

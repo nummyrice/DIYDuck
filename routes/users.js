@@ -2,16 +2,14 @@ const express = require('express');
 const router = express.Router();
 const { csrfProtection, asyncHandler } = require('./utils.js');
 const {check, validationResult} = require('express-validator')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
 const db = require('../db/models');
 const { loginUser, logoutUser} = require('../auth')
 
 /* GET SIGNUP FORM */
 router.get('/signup', csrfProtection, (req, res) => {
-  const user = db.User.build();
   res.render("sign-up-form", {
     title: "Sign Up",
-    user,
     csrfToken: req.csrfToken()
   })
 })
@@ -170,7 +168,7 @@ router.get('/users/:id(\\d+)', asyncHandler(async (req,res) => {
   })
   res.render('profile', { user, userQuestions })
 }))
-
+// this route needs to be changed to /users/:id/delete to be restful
 router.post('/users/delete',asyncHandler(async (req,res) => {
     const { userId } = req.body
     const user = await db.User.findByPk(userId)
@@ -178,6 +176,21 @@ router.post('/users/delete',asyncHandler(async (req,res) => {
     res.redirect('/');
 }))
 
+
+/*
+ user/:id
+-- if user is authorized and id matches this url
+  -- display edit and delete options
+-- all other display options are the same for all users (perhaps different styling?)
+  --display user bio
+  --display profession
+  --display user photo
+  --display asked questions
+  -- display answers
+  --display comments
+  --display liked answers
+  --display most active categories for user???
+*/
 
 
 module.exports = router;

@@ -1,0 +1,36 @@
+extends layout
+
+
+
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/index.css")
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css")
+  //- add page specific js
+  script(src="/javascripts/index.js" type="module" defer)
+
+block content
+  div(class="home-container")
+    div(class="categories")
+      div(class="cat_label") Categories
+      a(class='art' href='categories/:categoryId') Art
+      a(class="furnishing" href='/furnishing') Furnishing
+      a(class="cooking" href='/cooking') Cooking
+      a(class="fashion" href='/fashion') Fashion
+      a(class='digital' href='/digital') Digital
+      a(class='family' href='/family') Family
+      a(class="kids" href='/kids') Kids
+      a(class="pets" href='/pets') Pets
+      a(class="restoration" href='/restoration') Restoration
+      a(class="seasonal" href='/seasonal') Seasonal
+    div(class="questions")
+      div(class="q_label") Questions
+      span(class="posted-q")
+        div(class="name") Name
+        div(class="profession") Profession
+        div(class="question") insert question here
+        div(class="question_buttons")
+          i(class="far fa-heart")
+          i(class="far fa-comment")
+    div(class="tbd")
+      div(class="tbd_label") TBD

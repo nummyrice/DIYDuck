@@ -4,6 +4,8 @@ html
       block head
         title="DIY Duck App"
         link(rel='stylesheet' href='/stylesheets/layout.css')
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css")
+        script(src="/javascripts/questionModal.js" type="module" defer)
   body
     nav(class='navBar')
       a(class='logo' href='/') DIY Duck
@@ -13,14 +15,14 @@ html
           span(class='welcome') Welcome #{user.name}!
           form(class='logout' action='/logout' method='post')
             button(class='logoutButton' type='submit') Logout
-          form(class='addQuestion' action='/questions/new')
-            button(id='queMdl' class='questionButton' type='submit') Add Question
+          button(id='questionButton' class='questionButton' type='submit') Add Question
+          include questionModal
       else
           span(class='loginSignUp')
           form(class='demo' action='/login' method='post')
             input(type='hidden' name='_csrf' value=csrfToken)
-            input(type="hidden" name="email" required=true value="ram@gmail.com")
-            input(type="hidden" name="password" required=true value="Ram@123")
+            input(type="hidden" name="email" value="demo@gmail.com")
+            input(type="hidden" name="password" value="Demo@123")
             button(class='demoButton' type='submit') Demo
           div
             a(class='login' href='/login') Login

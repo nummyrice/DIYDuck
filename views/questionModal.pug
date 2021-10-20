@@ -1,0 +1,15 @@
+div(id='questionModal' class='modal')
+  form(class='modal-content' action='/questions/new' method='post')
+    input(type='hidden' name='_csrf' value=csrfToken)
+    div(class='container')
+      label(for='title') Title
+      input(type='text' name='title' required)
+      br
+      label(for='content') Type your question here
+      input(type='text' placeholder='Start your question with "What","How","Why",etc.' name='content' required)
+      br
+      label(for="categoryId") Catogory:
+      select(id="categorySelector" class="categorySelector"  name="categoryId" required="required")
+      div(class='eraser')
+        button(class='cancelButton' type='button' id='cancelButton') Cancel
+        button(class='submitButton' type='submit') Submit

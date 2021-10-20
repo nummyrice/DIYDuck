@@ -6,28 +6,22 @@ mixin validationErrorSummary(errors)
         each error in errors
           li= error
 
-mixin usersQuestion(question, user, likes)
-  div
-    div
-      div
-        img(src=user.profilePhoto)
-      div
-        div
-          span=user.name
-        div
-          div
-            span=user.profession
-          div
-            dateCreated
-    div
-      span=questions.title
-    div
-      p=question.content
-    div
-      div
-        div
-          button(type="button") Like!
-        div
-          span=likes
-      div
-        button(type="button") Answer!
+
+mixin generateCategories(category)
+  a(class='categoryName' href=`/categories/${category.id}`) #{category.name}
+
+mixin usersQuestion(question)
+  div(class="posted-q")
+    div(class="q_header")
+      img(class='q_profile_photo' id=`${question.userId}` src=question.user.profilePhoto)
+      div(class='q_header_info')
+        div(class="q_username")=question.user.name
+        div(class="q_profession_and_date")
+          div(class="profession")=question.user.profession
+          div(class='date_updated')=question.updatedAt
+    span(class="q_title")=question.title
+    p(class="question")=question.content
+    div(class="question_buttons")
+      i(class="far fa-heart")
+      i(class="far fa-comment")
+

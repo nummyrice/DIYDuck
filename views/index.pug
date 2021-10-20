@@ -1,4 +1,7 @@
 extends layout
+include utils.pug
+
+include utils.pug
 
 append head
   //- add page specific styles by appending to the head
@@ -11,23 +14,13 @@ block content
   div(class="home-container")
     div(class="categories")
       div(class="cat_label") Categories
-      a(class='knitting' href='/') Knitting
-      a(class="woodworking" href='/') Woodworking
-      a(class="drawing" href='/') Drawing
-      a(class="sculpture" href='/') Sculpture
-      a(class='3dprinting' href='/') 3D Printing
-      a(class='calligraphy' href='/') Calligraphy
-      a(class="sewing" href='/') Sewing
-      a(class="painting" href='/') Painting
+      each category in categories
+        +generateCategories(category)
     div(class="questions")
       div(class="q_label") Questions
-      span(class="posted-q")
-        div(class="name") Name
-        div(class="profession") Profession
-        div(class="question") insert question here
-        div(class="question_buttons")
-          i(class="far fa-heart")
-          i(class="far fa-comment")
+        each question in questions
+          +usersQuestion(question)
+
     div(class="tbd")
       div(class="tbd_label") TBD
       div
@@ -40,3 +33,4 @@ block content
 //- Need to make correct href links once the database for categories is created and seeded
 //- Not sure if we can put in anything in the questions section until the DB is seeded
 //- Should we do an infinite scroll, or would that not be necessary unless we have extra time?
+//- query for likes and display like quantity
