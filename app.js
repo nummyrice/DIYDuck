@@ -10,6 +10,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const questionRouter = require('./routes/question')
+const categoryRouter = require('./routes/categories')
 const { restoreUser } = require('./auth');
 const categoryRouter = require('./routes/categories')
 
