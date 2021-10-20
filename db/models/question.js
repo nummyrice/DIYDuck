@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
       hooks: true
     });
-    Question.hasOne(models.Category, {
+    Question.belongsTo(models.Category, {
       as: 'category',
       foreignKey: 'categoryId',
     })

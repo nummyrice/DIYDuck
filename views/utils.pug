@@ -18,5 +18,7 @@ mixin usersQuestion(question)
     span(class="q_title")=question.title
     p(class="question")=question.content
     div(class="question_buttons")
-      i(class="far fa-heart")
-      i(class="far fa-comment")
+      form(class='like' action='/comments/answerId' method='post')
+        i(class="far fa-heart")
+      form(class='comments' action='/logout' method='post')
+        i(class="far fa-comment")

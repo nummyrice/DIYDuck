@@ -4,7 +4,7 @@ const db = require('../db/models');
 const { csrfProtection, asyncHandler } = require('./utils.js');
 
 /* GET home page. */
-router.get('/', asyncHandler(async function(req, res, next) {
+router.get('/',csrfProtection, asyncHandler(async function(req, res, next) {
   const questions = await db.Question.findAll({
     order: [['updatedAt', 'DESC']],
     limit: 10,
@@ -17,7 +17,8 @@ router.get('/', asyncHandler(async function(req, res, next) {
   // also need to query for likes
 
   // const users = await db.User.findAll
-  res.render( 'index', { questions });
+  res.render( 'index', { questions ,
+    csrfToken: req.csrfToken()});
 }));
 
 
