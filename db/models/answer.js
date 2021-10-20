@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
       hooks: true
     }),
-    Answer.hasMany(models.comment, {
+    Answer.hasMany(models.Comment, {
       as: 'comments',
       foreignKey: 'answerId',
       onDelete: 'CASCADE',
