@@ -9,7 +9,9 @@ router.get('/', asyncHandler(async function(req, res, next) {
     order: [['updatedAt', 'DESC']],
     limit: 10,
     include: ['user'],
+
   });
+
 
   // console.log('console.log: ', questions);
   // console.log('Users: ', questions[0].user);
