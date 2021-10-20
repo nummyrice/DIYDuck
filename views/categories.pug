@@ -1,5 +1,6 @@
 extends layout
-include utils.pug
+
+
 
 append head
   //- add page specific styles by appending to the head
@@ -12,8 +13,16 @@ block content
   div(class="home-container")
     div(class="categories")
       div(class="cat_label") Categories
-      each category in categories
-        +generateCategories(category)
+      a(class='art' href='categories/:categoryId') Art
+      a(class="furnishing" href='/furnishing') Furnishing
+      a(class="cooking" href='/cooking') Cooking
+      a(class="fashion" href='/fashion') Fashion
+      a(class='digital' href='/digital') Digital
+      a(class='family' href='/family') Family
+      a(class="kids" href='/kids') Kids
+      a(class="pets" href='/pets') Pets
+      a(class="restoration" href='/restoration') Restoration
+      a(class="seasonal" href='/seasonal') Seasonal
     div(class="questions")
       div(class="q_label") Questions
       span(class="posted-q")
@@ -25,9 +34,3 @@ block content
           i(class="far fa-comment")
     div(class="tbd")
       div(class="tbd_label") TBD
-
-
-//- TO DO:
-//- Need to make correct href links once the database for categories is created and seeded
-//- Not sure if we can put in anything in the questions section until the DB is seeded
-//- Should we do an infinite scroll, or would that not be necessary unless we have extra time?

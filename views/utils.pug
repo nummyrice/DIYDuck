@@ -31,3 +31,6 @@ mixin usersQuestion(question, user, likes)
           span=likes
       div
         button(type="button") Answer!
+
+mixin generateCategories(category)
+  a(class='categoryName' href=`/categories/${category.id}`) #{category.name}
