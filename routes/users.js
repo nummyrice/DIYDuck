@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { csrfProtection, asyncHandler } = require('./utils.js');
 const {check, validationResult} = require('express-validator')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
 const db = require('../db/models');
 const { loginUser, logoutUser} = require('../auth')
 
@@ -165,7 +165,7 @@ router.get('/users/:id(\\d+)', asyncHandler(async (req,res) => {
   const user = await db.User.findByPk(userId)
   res.render('profile', { user })
 }))
-
+// this route needs to be changed to /users/:id/delete to be restful
 router.post('/users/delete',asyncHandler(async (req,res) => {
     const { userId } = req.body
     const user = await db.User.findByPk(userId)
@@ -175,9 +175,18 @@ router.post('/users/delete',asyncHandler(async (req,res) => {
 
 
 /*
---create handler for user/:id
---display user bio info if applicable
---display frequently used question
+ user/:id
+-- if user is authorized and id matches this url
+  -- display edit and delete options
+-- all other display options are the same for all users (perhaps different styling?)
+  --display user bio
+  --display profession
+  --display user photo
+  --display asked questions
+  -- display answers
+  --display comments
+  --display liked answers
+  --display most active categories for user???
 */
 
 
