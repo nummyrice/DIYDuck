@@ -7,10 +7,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Category.associate = function(models) {
-    // associations can be defined here
-    Category.hasMany(models.Question, {
+    Category.belongsTo(models.Question, {
       as: 'questions',
-      foreignKey: 'questionId',
+      foreignKey: 'categoryId',
     })
   };
   return Category;

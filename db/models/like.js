@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
   Like.associate = function(models) {
     // associations can be defined here
     Like.belongsTo(models.Answer, {
-      as: 'answers',
+      as: 'answer',
       foreignKey: "answerId",
     });
     Like.belongsTo(models.User, {
-      as: 'users',
+      as: 'user',
       foreignKey: 'userId',
     })
   };

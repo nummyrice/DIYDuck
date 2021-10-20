@@ -6,17 +6,17 @@ mixin validationErrorSummary(errors)
         each error in errors
           li= error
 
-mixin usersQuestion(question, user, likes)
+mixin usersQuestion(question)
   div
     div
       div
-        img(src=user.profilePhoto)
+        img(src=question.user.profilePhoto)
       div
         div
-          span=user.name
+          span=question.user.name
         div
           div
-            span=user.profession
+            span=question.user.profession
           div
             dateCreated
     div
