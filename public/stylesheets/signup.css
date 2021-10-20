@@ -1,0 +1,49 @@
+.signUpForm{
+    margin: 0 auto 0 auto;
+    width: 600px;
+    padding: 1em;
+}
+
+label {
+    display: inline-block;
+    width: 200px;
+    text-align: left;
+    font-weight: bold;
+    font-size:20px;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+}
+
+p{
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+    font-size:20px;
+}
+
+input, textarea {
+    width: 500px;
+    box-sizing:border-box;
+    border: 1px solid #999;
+    padding: 1em;
+    margin: 10px;
+}
+
+.alert{
+    margin: 0 auto;
+    width: 600px;
+    padding: 1em;
+    align-content: center;
+}
+
+.createUser{
+    background-color:#b92b27;
+    color:white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 1em
+}

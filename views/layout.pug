@@ -2,7 +2,7 @@ doctype html
 html
   head
       block head
-        title="Express Starter App"
+        title="DIY Duck App"
         link(rel='stylesheet' href='/stylesheets/layout.css')
   body
     nav(class='navBar')
@@ -10,13 +10,19 @@ html
       div
         input(class='searchBar' type='text' placeholder="Search your question")
       if locals.authenticated
-          span(class='welcome') Welcome #{user.Name}!
+          span(class='welcome') Welcome #{user.name}!
           form(class='logout' action='/logout' method='post')
             button(class='logoutButton' type='submit') Logout
-          form(class='addQuestion' action='/answer/:questionid')
-            button(class='questionButton' type='submit') Add Question
+          form(class='addQuestion' action='/questions/new')
+            button(id='queMdl' class='questionButton' type='submit') Add Question
       else
           span(class='loginSignUp')
+          form(class='demo' action='/login' method='post')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            input(type="hidden" name="email" required=true value="ram@gmail.com")
+            input(type="hidden" name="password" required=true value="Ram@123")
+            button(class='demoButton' type='submit') Demo
+          div
             a(class='login' href='/login') Login
           div
             a(class='signup' href='/signup') SignUp
