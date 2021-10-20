@@ -17,11 +17,11 @@ module.exports = (sequelize, DataTypes) => {
   Comment.associate = function(models) {
     // associations can be defined here
     Comment.belongsTo(models.Answer, {
-      as: "answers",
+      as: "answer",
       foreignKey: "answerId",
     });
     Comment.belongsTo(models.User, {
-      as: "users",
+      as: "user",
       foreignKey: "userId",
     });
   };
