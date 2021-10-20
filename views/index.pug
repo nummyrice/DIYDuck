@@ -3,16 +3,36 @@ extends layout
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1= title
-  p Welcome to your Project Skeleton
-  div
-    a(href="/signup") Sign Up!
-  div
-    a(href="/login") Log In
-  div
-    form( method='POST' action='/logout')
-      button(typr='submit') Logout
+  div(class="home-container")
+    div(class="categories")
+      div(class="cat_label") Categories
+      a(class='knitting' href='/') Knitting
+      a(class="woodworking" href='/') Woodworking
+      a(class="drawing" href='/') Drawing
+      a(class="sculpture" href='/') Sculpture
+      a(class='3dprinting' href='/') 3D Printing
+      a(class='calligraphy' href='/') Calligraphy
+      a(class="sewing" href='/') Sewing
+      a(class="painting" href='/') Painting
+    div(class="questions")
+      div(class="q_label") Questions
+      span(class="posted-q")
+        div(class="name") Name
+        div(class="profession") Profession
+        div(class="question") insert question here
+        div(class="question_buttons")
+          i(class="far fa-heart")
+          i(class="far fa-comment")
+    div(class="tbd")
+      div(class="tbd_label") TBD
+
+
+//- TO DO:
+//- Need to make correct href links once the database for categories is created and seeded
+//- Not sure if we can put in anything in the questions section until the DB is seeded
+//- Should we do an infinite scroll, or would that not be necessary unless we have extra time?
