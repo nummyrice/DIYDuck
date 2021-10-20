@@ -8,6 +8,8 @@ div(id='questionModal' class='modal')
       label(for='content') Type your question here
       input(type='text' placeholder='Start your question with "What","How","Why",etc.' name='content' required)
       br
+      label(for="categoryId") Catogory:
+      select(id="categorySelector" class="categorySelector"  name="categoryId" required="required")
       div(class='eraser')
         button(class='cancelButton' type='button' id='cancelButton') Cancel
         button(class='submitButton' type='submit') Submit

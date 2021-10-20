@@ -23,8 +23,9 @@ block content
       a(class="painting" href='/') Painting
     div(class="questions")
       div(class="q_label") Questions
-      each question in questions
-        +usersQuestion(question)
+        each question in questions
+          +usersQuestion(question)
+
     div(class="tbd")
       div(class="tbd_label") TBD
 
