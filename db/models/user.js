@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     });
     User.hasMany(models.Answer, {
       as: 'answers',
-      foreginKey: 'userId',
+      foreignKey: 'userId',
       onDelete: 'CASCADE',
       hooks: true
     });
