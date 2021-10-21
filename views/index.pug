@@ -7,7 +7,7 @@ append head
   link(rel="stylesheet" href="/stylesheets/index.css")
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css")
   //- add page specific js
-  script(src="/javascripts/index.js" type="module" defer)
+  script(src="/javascripts/comment.js" type="module" defer)
 
 block content
   div(class="home-container")
@@ -25,6 +25,9 @@ block content
       div(class="q_label") Questions
         each question in questions
           +usersQuestion(question)
+          div(class="commentsDiv")
+            each comment in comments
+              +usersComment(comment)
     div(class="tbd")
       div(class="tbd_label") TBD
 

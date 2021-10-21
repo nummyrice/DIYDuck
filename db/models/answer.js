@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
       hooks: true
     }),
+    Answer.belongsTo(models.User, {
+      as: 'user',
+      foreignKey: 'userId'
+    }),
     Answer.hasMany(models.Comment, {
       as: 'comments',
       foreignKey: 'answerId',

@@ -1,9 +1,8 @@
 const button = document.getElementById('questionButton')
 button.addEventListener('click', async (e) => {
 
-    const modal = document.getElementById('questionModal')
-    modal.style.display='block';
-
+    const selectOption = document.getElementById('selectOption')
+    if(!selectOption){
     const res = await fetch('/categories', {
         method: 'GET'
     })
@@ -18,9 +17,16 @@ button.addEventListener('click', async (e) => {
         const option = document.createElement("option");
         categorySelector.appendChild(option)
         option.setAttribute("value",`${element.id}`)
+        option.setAttribute("id","selectOption")
         option.innerText = `${element.name}`
     });
 
+    const modal = document.getElementById('questionModal')
+    modal.style.display='block';
+} else {
+    const modal = document.getElementById('questionModal')
+    modal.style.display='block';
+}
 })
 
 

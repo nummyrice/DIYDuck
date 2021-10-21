@@ -7,7 +7,7 @@ mixin validationErrorSummary(errors)
           li= error
 
 mixin usersQuestion(question)
-  div(class="posted-q")
+  div(id="posted-q" class="posted-q")
     div(class="q_header")
       img(class='q_profile_photo' id=`${question.userId}` src=question.user.profilePhoto)
       div(class='q_header_info')
@@ -15,10 +15,36 @@ mixin usersQuestion(question)
         div(class="q_profession_and_date")
           div(class="profession")=question.user.profession
           div(class='date_updated')=question.updatedAt
-    span(class="q_title")=question.title
+    span(class="q_title")
+        a(class="questionLink" href=`/questions/${question.id}`)=question.title
     p(class="question")=question.content
-    div(class="question_buttons")
-      form(class='like' action='/comments/answerId' method='post')
-        i(class="far fa-heart")
-      form(class='comments' action='/logout' method='post')
-        i(class="far fa-comment")
+    div(class="like_comment_buttons")
+        button(id="likeButton")
+            i(class="far fa-heart")
+        if comments.length
+            button(id="commentButton" class="collapsible")
+                i(class="far fa-comment")
+                span(class="totalcomments")=comments.length
+
+mixin usersComment(comment)
+    div(id="commentDiv" class="commentDiv")
+        div(class)
+        div( class='q_label comment_label') Comments
+        div(class="q_header comment_header")
+            img(class='q_profile_photo comment_profile_photo' id=`${comment.userId}` src=comment.user.profilePhoto)
+            div(class='q_header_info comment_header_info')
+                div(class="q_username comment_username")=comment.user.name
+                div
+                div(class="q_profession_and_date comment_profession_and_date")
+                div
+                div(class="profession comment-profession")=comment.user.profession
+                div
+                div(class='date_updated comment_date_updated')=comment.updatedAt
+                div
+                p(class="question comment")=comment.comment
+        //- if locals.autheticated = comment.userId
+        //- div(class="comment_edit_delete_buttons")
+        //-     button(class="comment_edit") Edit
+        //-     form(action=`/comments/${id}` method="delete")
+        //-         input(type="hidden" name="_csrf" value=csrfToken)
+        //-         button(id=`comment_delete-${id}` class="comment_delete") Delete
