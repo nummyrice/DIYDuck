@@ -10,7 +10,8 @@ html
     nav(class='navBar')
       a(class='logo' href='/') DIY Duck
       div
-        input(class='searchBar' type='text' placeholder="Search your question")
+        form(method="post" action="/")
+          input(class='searchBar' type='text' placeholder="Search your question" name="search")
       if locals.authenticated
           span(class='welcome') Welcome #{user.name}!
           form(class='logout' action='/logout' method='post')
