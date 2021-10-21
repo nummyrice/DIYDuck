@@ -11,8 +11,7 @@ router.get('/', asyncHandler(async function(req, res, next) {
     order: [['updatedAt', 'DESC']],
     limit: 10,
     include: ['user'],
-<<<<<<< HEAD
-=======
+
 
   });
 
@@ -21,9 +20,8 @@ router.get('/', asyncHandler(async function(req, res, next) {
   // console.log('Users: ', questions[0].user);
   //How to properly get users array based off of 10 most recent questions
   // also need to query for likes
->>>>>>> answers
 
-  });
+
   res.render( 'index', { questions, categories });
 }));
 
