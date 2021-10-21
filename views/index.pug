@@ -20,15 +20,6 @@ block content
           +usersQuestion(question)
 
     div(class="tbd")
-      div(class="tbd_label") TBD
-      div
-      if user
-          img(src=(user.profilePhoto || 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png') style='width:75px; height:75px;')
-          a(href=`/users/${user.id}`) #{user.name}'s Account
-
-
-//- TO DO:
-//- Need to make correct href links once the database for categories is created and seeded
-//- Not sure if we can put in anything in the questions section until the DB is seeded
-//- Should we do an infinite scroll, or would that not be necessary unless we have extra time?
-//- query for likes and display like quantity
+        if user
+            img(class="side_profile" src=(user.profilePhoto || 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png') style='width:75px; height:75px;')
+            a(href=`/users/${user.id}`) #{user.name}'s Account
