@@ -13,7 +13,8 @@ mixin generateCategories(category)
 mixin usersQuestion(question)
   div(class="posted-q")
     div(class="q_header")
-      img(class='q_profile_photo' id=`${question.userId}` src=question.user.profilePhoto)
+      a(href=`/users/${question.userId}`)
+        img(class='q_profile_photo' id=`${question.userId}` src=question.user.profilePhoto)
       div(class='q_header_info')
         div(class="q_username")=question.user.name
         div(class="q_profession_and_date")
@@ -21,6 +22,20 @@ mixin usersQuestion(question)
           div(class='date_updated')=question.updatedAt
     span(class="q_title")=question.title
     p(class="question")=question.content
-    div(class="question_buttons")
+    //- button(type="button", class='q_view_answers_button') View All Answers
+
+//- note: practice with class literals syntax
+mixin questionAnswers(answer)
+  div.answer_body
+    div.answer_head
+      a.answer_a(href=`/users/${answer.userId}`)
+          img.answer_profile_pic(id=`${answer.userId}` src=answer.User.profilePhoto)
+      div.answer_header_info
+        div.answer_username=answer.User.name
+        div.answer_profession_and_date
+          div(class="answer_profession")=answer.User.profession
+          div(class='answer_date_updated')=answer.updatedAt
+    p.question=answer.answer
+    div.answer_buttons
       i(class="far fa-heart")
       i(class="far fa-comment")

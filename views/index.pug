@@ -5,6 +5,8 @@ append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css")
+  link(rel="stylesheet" href="/stylesheets/answers.css")
+  link(rel="stylesheet" href="/stylesheets/questions.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
@@ -18,7 +20,9 @@ block content
       div(class="q_label") Questions
         each question in questions
           +usersQuestion(question)
-
+          if question.answers.length > 0
+            div(class="answer_section")
+              +questionAnswers(question.answers[0])
     div(class="tbd")
         if user
             img(class="side_profile" src=(user.profilePhoto || 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png') style='width:75px; height:75px;')
