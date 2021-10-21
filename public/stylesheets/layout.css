@@ -168,3 +168,9 @@ input{
   font-size: medium;
   margin: 10px;
 }
+
+.imgLogo{
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}

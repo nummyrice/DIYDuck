@@ -164,7 +164,10 @@ router.get('/users/:id(\\d+)', asyncHandler(async (req,res) => {
   const userQuestions = await db.Question.findAll({
     where: {
       userId: userId
-    }
+    },
+    include: [
+      'user'
+    ]
   })
   res.render('profile', { user, userQuestions })
 }))
@@ -176,6 +179,31 @@ router.post('/users/delete',asyncHandler(async (req,res) => {
     res.redirect('/');
 }))
 
+router.get('/users/edit',asyncHandler(async (req,res) => {
+  res.render('edit');
+}))
+
+router.post('/users/editUser',asyncHandler(async (req,res) => {
+  const{
+    name,
+    profession,
+    biography,
+    userId
+  } = req.body
+
+  const user = await db.User.findByPk(userId)
+
+
+  user.name = name
+  user.profession= profession
+  user.biography = biography
+
+  user.save()
+  
+  console.log(user)
+
+  res.redirect(`/users/${userId}`)
+}))
 
 /*
  user/:id
