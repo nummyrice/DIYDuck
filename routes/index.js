@@ -2,11 +2,13 @@ var express = require('express');
 var router = express.Router();
 const db = require('../db/models');
 const { csrfProtection, asyncHandler } = require('./utils.js');
-const { Op } = require("sequelize")
+
+const { Op } = require("sequelize");
 
 /* GET home page. */
-router.get('/', asyncHandler(async function(req, res, next) {
+router.get('/',csrfProtection, asyncHandler(async function(req, res, next) {
   const categories = await db.Category.findAll()
+  
   // get 10 most recent questions for home page
   const questions = await db.Question.findAll({
     order: [['updatedAt', 'DESC']],
@@ -19,19 +21,22 @@ router.get('/', asyncHandler(async function(req, res, next) {
     order: [['updatedAt', 'DESC']],
     include: [{model: db.User}] }],
   });
-  console.log('///////////////////////////////////////////////////');
-  console.log('log: ', questions[0].answers[0]);
+  
+  // get comments for a question
+  const comments = await db.Comment.findAll({
+    where : {
+      answerId : 1, //change after answer is configured
+    },
+    order: [['updatedAt', 'DESC']],
+    include: ['user'],
+  })
+  
+  res.render( 'index', {
+    questions,
+    categories,
+    comments,
+    csrfToken: req.csrfToken()});
 
-  // const answers = await db.Answer.findAll();
-
-
-  // console.log('console.log: ', answers);
-  // console.log('Users: ', questions[0].user);
-  //How to properly get users array based off of 10 most recent questions
-  // also need to query for likes
-
-
-  res.render( 'index', { questions, categories });
 }));
 
 router.post("/", asyncHandler(async (req, res, next) =>{

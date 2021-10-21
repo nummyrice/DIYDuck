@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       hooks: true
     });
     Question.belongsTo(models.Category, {
-      as: 'categories',
+      as: 'category',
       foreignKey: 'categoryId',
     })
   };

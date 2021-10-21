@@ -8,7 +8,7 @@ append head
   link(rel="stylesheet" href="/stylesheets/answers.css")
   link(rel="stylesheet" href="/stylesheets/questions.css")
   //- add page specific js
-  script(src="/javascripts/index.js" type="module" defer)
+  script(src="/javascripts/comment.js" type="module" defer)
 
 block content
   div(class="home-container")
@@ -23,6 +23,10 @@ block content
           if question.answers.length > 0
             div(class="answer_section")
               +questionAnswers(question.answers[0])
+                div(class="commentsDiv")
+                  each comment in comments
+                    +usersComment(comment)
+
     div(class="tbd")
         if user
             img(class="side_profile" src=(user.profilePhoto || 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png') style='width:75px; height:75px;')
