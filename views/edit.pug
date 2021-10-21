@@ -1,0 +1,20 @@
+extends layout.pug
+
+block content
+  body
+    div(class='editForm')
+      form(action=`/users/editUser` method="post")
+        input(type='hidden' value=user.id name='userId')
+        label(for='name') Edit Name:
+        br
+        input(value=user.name name='name')
+        br
+        label(for='profession') Edit Profession:
+        br
+        input(value=user.profession name='profession')
+        br
+        label(for='biography') Edit Biography:
+        br
+        input(value=user.biography name='biography')
+        br
+        button(type='submit' class='editButton') Edit Account
