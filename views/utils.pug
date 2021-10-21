@@ -25,16 +25,17 @@ mixin usersQuestion(question)
     //- button(type="button", class='q_view_answers_button') View All Answers
 
 //- note: practice with class literals syntax
-mixin questionAnswers(answers, numberDisplayed)
+mixin questionAnswers(answer)
   div.answer_body
     div.answer_head
-      a(href=`/users/${question.userId}`)
-          img.q_profile_photo(id=`${answer.userId}` src=answer.user.profilePhoto)
-      div.q_header_info
-        div.q_username=answer.user.name
-        div.q_profession_and_date
-    span.q_title=question.title
-    p.question=question.content
-    div.question_buttons
+      a.answer_a(href=`/users/${answer.userId}`)
+          img.answer_profile_pic(id=`${answer.userId}` src=answer.User.profilePhoto)
+      div.answer_header_info
+        div.answer_username=answer.User.name
+        div.answer_profession_and_date
+          div(class="answer_profession")=answer.User.profession
+          div(class='answer_date_updated')=answer.updatedAt
+    p.question=answer.answer
+    div.answer_buttons
       i(class="far fa-heart")
       i(class="far fa-comment")

@@ -10,13 +10,21 @@ router.get('/', asyncHandler(async function(req, res, next) {
   const questions = await db.Question.findAll({
     order: [['updatedAt', 'DESC']],
     limit: 10,
-    include: ['user'],
-
-
+    include: [{model: db.User,
+    as: 'user'}, {
+      model: db.Answer,
+    as:'answers',
+    limit: 1,
+    order: [['updatedAt', 'DESC']],
+    include: [{model: db.User}] }],
   });
+  console.log('///////////////////////////////////////////////////');
+  console.log('log: ', questions[0].answers[0]);
+
+  // const answers = await db.Answer.findAll();
 
 
-  // console.log('console.log: ', questions);
+  // console.log('console.log: ', answers);
   // console.log('Users: ', questions[0].user);
   //How to properly get users array based off of 10 most recent questions
   // also need to query for likes
