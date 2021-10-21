@@ -1,15 +1,12 @@
 var express = require('express');
-const db = require('../db/models/index.js');
 var router = express.Router();
 const db = require('../db/models');
 const { csrfProtection, asyncHandler } = require('./utils.js');
 
 /* GET home page. */
-
-
-//key into different database, sent to same render
 router.get('/', asyncHandler(async function(req, res, next) {
   const categories = await db.Category.findAll()
+  // get 10 most recent questions for home page
   const questions = await db.Question.findAll({
     order: [['updatedAt', 'DESC']],
     limit: 10,
