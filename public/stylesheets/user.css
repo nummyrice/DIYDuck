@@ -1,6 +1,41 @@
-body{
-  background-color: gainsboro;
+.container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profilePicture{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.userName{
+  font-size: 75px;
+  font-family:Arial, Helvetica, sans-serif ;
+  text-align: center;
+}
+
+.profession{
+  font-size: 15px;
+  font-family:Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.bio{
+  text-align: center;
+}
+
+.deleteButton{
+  background-color: red;
+  text-align: center;
+  color: white;
+  justify-content: center;
+}
+
+.deleteForm{
   display: flex;
   justify-content: center;
-  padding: 15px;
 }
+
+
+

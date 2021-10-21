@@ -5,27 +5,15 @@ append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css")
-  link(rel="stylesheet" href="/stylesheets/answers.css")
-  link(rel="stylesheet" href="/stylesheets/questions.css")
   //- add page specific js
-  script(src="/javascripts/comment.js" type="module" defer)
+  script(src="/javascripts/index.js" type="module" defer)
 
 block content
   div(class="home-container")
-    div(class="categories")
-      div(class="cat_label") Categories
-      each category in categories
-        +generateCategories(category)
     div(class="questions")
       div(class="q_label") Questions
         each question in questions
           +usersQuestion(question)
-          if question.answers.length > 0
-            div(class="answer_section")
-              +questionAnswers(question.answers[0])
-                div(class="commentsDiv")
-                  each comment in comments
-                    +usersComment(comment)
 
     div(class="tbd")
         if user

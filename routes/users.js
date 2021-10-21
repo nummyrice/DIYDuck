@@ -161,7 +161,15 @@ router.post('/logout', (req, res) => {
 router.get('/users/:id(\\d+)', asyncHandler(async (req,res) => {
   const userId = req.params.id
   const user = await db.User.findByPk(userId)
-  res.render('profile', { user })
+  const userQuestions = await db.Question.findAll({
+    where: {
+      userId: userId
+    },
+    include: [
+      'user'
+    ]
+  })
+  res.render('profile', { user, userQuestions })
 }))
 // this route needs to be changed to /users/:id/delete to be restful
 router.post('/users/delete',asyncHandler(async (req,res) => {
@@ -171,6 +179,31 @@ router.post('/users/delete',asyncHandler(async (req,res) => {
     res.redirect('/');
 }))
 
+router.get('/users/edit',asyncHandler(async (req,res) => {
+  res.render('edit');
+}))
+
+router.post('/users/editUser',asyncHandler(async (req,res) => {
+  const{
+    name,
+    profession,
+    biography,
+    userId
+  } = req.body
+
+  const user = await db.User.findByPk(userId)
+
+
+  user.name = name
+  user.profession= profession
+  user.biography = biography
+
+  user.save()
+  
+  console.log(user)
+
+  res.redirect(`/users/${userId}`)
+}))
 
 /*
  user/:id

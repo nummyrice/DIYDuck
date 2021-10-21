@@ -20,6 +20,7 @@
     border: solid 1px #c3c8ca;
     align-self: start;
 }
+
 .cat_label{
     margin-bottom: 20px;
     font-weight: bold;
@@ -29,14 +30,16 @@
     background-color: #ffffff;
     grid-area: questions;
     justify-self: center ;
-    padding: 15px;
+    padding: 20px;
     border-radius: 10px;
     border: solid 1px #c3c8ca;
     align-self: stretch;
 }
 
 .q_label{
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
 }
 
 .posted-q{
@@ -52,7 +55,6 @@
     padding: 15px;
 
 }
-
 /* Question Header Styling */
 
 .q_profile_photo {
@@ -73,6 +75,7 @@
 .q_header_info {
    display:flex;
    flex-direction: column;
+   justify-content: center;
 
 }
 
@@ -83,11 +86,13 @@
 .profession {
     font-size: small;
 
+
 }
 
 .date_updated {
     font-size:8px;
     color: grey;
+
 }
 
 .date_updated::before {
@@ -104,6 +109,7 @@
 
 }
 
+
 /* Question Title Styling*/
 
 .q_title {
@@ -115,20 +121,17 @@
     text-decoration: underline black;
 }
 
-/* TBD */
+/* PROFILE COLUMN */
 .tbd{
     grid-area: TBD;
     background-color: #ffffff;
-    justify-self: left ;
-    padding: 15px 40px 80px 40px;
+    justify-self: center ;
+    padding: 15px 40px 40px 40px;
     border-radius: 10px;
     border: solid 1px #c3c8ca;
     align-self: start;
 }
 
-.tbd_label{
-    font-weight: bold;
-}
 
 a{
     display: block;
@@ -137,6 +140,17 @@ a{
     text-decoration: none;
     border-radius: 10px;
     margin: 8px;
+
+}
+
+.side_profile{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border:1px solid #939394;
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-bottom: 10px;
 }
 
 /* Css for comments */

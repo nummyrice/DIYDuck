@@ -2,3 +2,5 @@
 // profilePhoto.addEventListener('click', async (e) => {
 //     location.href = '/'
 // });
+
+// delete this file? May not be needed.

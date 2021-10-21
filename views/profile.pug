@@ -1,29 +1,38 @@
 extends layout.pug
+include utils.pug
 
+append head
+    link(rel='stylesheet' href='/stylesheets/index.css')
+    link(rel='stylesheet' href='/stylesheets/user.css')
 block content
-    head
-        link(rel='stylesheet' href='/stylesheets/user.css')
     body
-        div
-            div
-                if user
-                    img(src=(user.profilePhoto || 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png') style='width:75px; height:75px;')
-
-                    div
-                        span(class='userName')=user.name
-                    div
-                        span=user.profession
-                    div
-                        span=user.biography
-                    div
-                        form(action="/users/delete" method="POST")
-                            input(type='hidden' value=user.id name='userId')
-                            button(type='submit' class='deleteButton') Delete Account
-
-
-    //- photo done
-    //- name done
-    //-profession done
-    //-biography done
-    //- each question in questions
-    //-     +UserQuestion(question, user, likes)
+        if user
+            .container
+                img(src=(user.profilePhoto || 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png') class='profilePicture')
+                div
+                    h1(class='userName')=user.name
+                div
+                    h2(class='profession')=user.profession
+                div
+                    h3(class='bio')=user.biography
+                .questionBody
+                    .questionContainer
+                        each question in userQuestions
+                            +usersQuestion(question)
+                .edit
+                    a(href='/users/edit') Edit Account
+                div(class='deleteForm')
+                    form(action="/users/delete" method="POST")
+                        input(type='hidden' value=user.id name='userId')
+                        button(type='submit' class='deleteButton') Delete Account
+        //- div(class='divContainer')
+        //-         div(class='questionsContainer')
+        //-             h1 Questions
+        //-             each question in userQuestions
+        //-                 div(class='singleQuestion')
+        //-                     h2=question.title
+        //-                     p=question.content
+        //-         div(class='deleteForm')
+        //-             form(action="/users/delete" method="POST")
+        //-                 input(type='hidden' value=user.id name='userId')
+        //-                 button(type='submit' class='deleteButton') Delete Account
