@@ -24,37 +24,40 @@ router.post('/new',csrfProtection, asyncHandler(async (req, res) => {
     res.redirect('/');
 }));
 
+
 router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req,res) => {
     const questionId = req.params.id
 
-    const question = await db.Question.findAll({
+    const question = await db.Question.findAll(
+        {
+        order: [['updatedAt', 'DESC']],
         where:{
             id : questionId
         },
-        include: ['user','answers']
+        include: [
+          {model: db.User,
+          as: 'user'},
+          {model: db.Answer,
+          as:'answers',
+          order: [['updatedAt', 'DESC']],
+        include: [{model: db.User, as: 'user'},
+          {model: db.Comment, as:'comments', include:[{model: db.User,as: 'user' }]}],
+      }],
       });
 
     //   console.log("////////////////////////////")
-    //   console.log(question[0].answers[0].id)
+    //   console.log(question[0].answers)
 
+    
 
-      const comments = await db.Comment.findAll({
-        where : {
-          answerId : 1, //change after answer is configured
-        },
-        order: [['updatedAt', 'DESC']],
-        include: ['user'],
-      })
-
-    //   console.log(question)
-
-    let answerId = 1 //hard coding
+    const categories = await db.Category.findAll();
 
       res.render( 'questionIdPage', {
         question,
-        comments,
-        answerId,
-        csrfToken: req.csrfToken()});
+        categories,
+
+        csrfToken: req.csrfToken()
+    });
 
     // res.send("hello")
 

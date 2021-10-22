@@ -1,7 +1,9 @@
 .answer_section {
 display: flex;
 flex-direction: column;
-align-items: center;
+align-items: flex-start;
+padding-left: 30px;
+padding-top:10px ;
 }
 
 .answer_body {
@@ -33,7 +35,7 @@ align-items: center;
 .answer_header_info {
     display:flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
 
  }
 
@@ -43,8 +45,7 @@ align-items: center;
 
 .answer_profession {
     font-size: small;
-
-
+    padding:10px;
 }
 
 .answer_date_updated {
@@ -66,8 +67,17 @@ align-items: center;
     padding: 5px 10px 5px 10px;
 }
 
-.fa-heart,
-.fa-comment {
-    margin: 10px;
-
+.answer_username{
+    padding-top: 10px;
+    padding-left: 10px;
 }
+
+.answer_label {
+    display: inline-block;
+    width: 590px;
+    text-align: left;
+    font-weight: bold;
+    font-size:20px;
+    padding-left:10px ;
+    padding-top: 10px;
+  }
