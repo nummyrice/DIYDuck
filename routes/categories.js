@@ -15,25 +15,26 @@ router.get("/categories/:categoryId(\\d+)", asyncHandler(async (req, res) => {
 
     const categoryId = req.params.categoryId;
     const categories = await db.Category.findAll()
-    const questions = await db.Question.findAll({
-      order: [['updatedAt', 'DESC']],
-      where: {
-        categoryId: categoryId,
-      },
-      include: [{
-        model: db.User,
-        as: 'user'
-        }, {
-        model: db.Answer,
-        as:'answers',
-        limit: 1,
+
+    const questions = await db.Question.findAll(
+        {
         order: [['updatedAt', 'DESC']],
-        include: [{
-          model: db.User,
-          as: 'user'
-        }]
+        where: {
+            categoryId: categoryId,
+          },
+        include: [
+          {model: db.User,
+          as: 'user'},
+          {model: db.Answer,
+          as:'answers',
+          limit: 1,
+          order: [['updatedAt', 'DESC']],
+        include: [{model: db.User, as: 'user'},
+          {model: db.Comment, as:'comments', include:[{model: db.User,as: 'user' }]}],
       }],
-    });
+      });
+
+
     res.render("index", { questions, categories });
   })
 );
