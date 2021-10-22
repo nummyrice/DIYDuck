@@ -18,15 +18,13 @@ router.get('/',csrfProtection, asyncHandler(async function(req, res, next) {
       as: 'user'
       }, {
       model: db.Answer,
-      as:'answers',
-      limit: 1,
-      order: [['updatedAt', 'DESC']],
-      include: [{
-        model: db.User,
-        as: 'user'
-      }]
-    }],
+
+    as:'answers',
+    limit: 1,
+    order: [['updatedAt', 'DESC']],
+    include: [{model: db.User, as: 'user'}] }],
   });
+
 
   res.render( 'index', {
     questions,
