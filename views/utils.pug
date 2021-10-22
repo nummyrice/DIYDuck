@@ -47,6 +47,10 @@ mixin usersComment(comment)
                 div(class='date_updated comment_date_updated')=comment.updatedAt
                 div
                 p(class="question comment")=comment.comment
+
+
+
+
         //- if locals.autheticated = comment.userId
         //- div(class="comment_edit_delete_buttons")
         //-     button(class="comment_edit") Edit
@@ -61,11 +65,11 @@ mixin questionAnswers(answer)
   div.answer_body
     div.answer_head
       a.answer_a(href=`/users/${answer.userId}`)
-          img.answer_profile_pic(id=`${answer.userId}` src=answer.User.profilePhoto)
+          img.answer_profile_pic(id=`${answer.userId}` src=answer.user.profilePhoto)
       div.answer_header_info
-        div.answer_username=answer.User.name
+        div.answer_username=answer.user.name
         div.answer_profession_and_date
-          div(class="answer_profession")=answer.User.profession
+          div(class="answer_profession")=answer.user.profession
           div(class='answer_date_updated')=answer.updatedAt
     p.question=answer.answer
     div.answer_buttons

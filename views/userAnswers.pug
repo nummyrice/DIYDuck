@@ -1,0 +1,26 @@
+extends layout.pug
+include utils.pug
+
+append head
+    link(rel='stylesheet' href='/stylesheets/index.css')
+    link(rel='stylesheet' href='/stylesheets/user.css')
+    link(rel='stylesheet' href='/stylesheets/answers.css')
+block content
+    body
+        if user
+            .container
+                img(src=(user.profilePhoto || 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png') class='profilePicture')
+                div
+                    h1(class='userName')=user.name
+                div
+                    h2(class='profession')=user.profession
+                div
+                    h3(class='bio')=user.biography
+                .hyperlinks
+                    a(href=`/users/${user.id}`) Questions
+                    a(href=`/users/${user.id}/answers`) Answers
+                .answersBody
+                    .answerContainer
+                        h1 Answers:
+                        each answer in userAnswers
+                            +questionAnswers(answer)

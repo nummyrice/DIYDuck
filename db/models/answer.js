@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       hooks: true
     });
     Answer.belongsTo(models.User, {
-      // as: 'user',
+      as: 'user',
       foreignKey: 'userId'
     });
     Answer.hasMany(models.Comment, {
