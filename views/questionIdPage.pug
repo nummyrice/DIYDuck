@@ -3,46 +3,37 @@ extends layout
 include utils.pug
 
 append head
-  //- add page specific styles by appending to the head
-  link(rel="stylesheet" href="/stylesheets/index.css")
-  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css")
-  //- add page specific js
-  script(src="/javascripts/comment.js" type="module" defer)
+
+    link(rel="stylesheet" href="/stylesheets/index.css")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css")
+    link(rel="stylesheet" href="/stylesheets/answers.css")
+
+
+    script(src="/javascripts/comment.js" type="module" defer)
 
 block content
-  div(class="home-container")
-    div(class="categories")
-      div(class="cat_label") Categories
-      a(class='knitting' href='/') Knitting
-      a(class="woodworking" href='/') Woodworking
-      a(class="drawing" href='/') Drawing
-      a(class="sculpture" href='/') Sculpture
-      a(class='3dprinting' href='/') 3D Printing
-      a(class='calligraphy' href='/') Calligraphy
-      a(class="sewing" href='/') Sewing
-      a(class="painting" href='/') Painting
-    div(class="questions")
-      div(class="q_label") Questions
-            div(id="posted-q" class="posted-q")
+    div(class="home-container")
+        div(class="categories")
+            div(class="cat_label") Categories
+            each category in categories
+                +generateCategories(category)
+        div(class="questions")
+           div(id="posted-q" class="posted-q")
+                div(class='q_label question_label') Question
                 div(class="q_header")
-                img(class='q_profile_photo' id=`${question.userId}` src=question[0].user.profilePhoto)
-                div(class='q_header_info')
-                    div(class="q_username")=question[0].user.name
-                    div(class="q_profession_and_date")
-                    div(class="profession")=question[0].user.profession
-                    div(class='date_updated')=question[0].updatedAt
+                    img(class='q_profile_photo' id=`${question[0].userId}` src=question[0].user.profilePhoto)
+                    div(class='q_header_info')
+                        div(class="q_username")=question[0].user.name
+                        div(class="q_profession_and_date")
+                            div(class="profession")=question[0].user.profession
+                            div(class='date_updated')=question[0].updatedAt
                 span(class="q_title")=question[0].title
                 p(class="question")=question[0].content
-                div(class="like_comment_buttons")
-                    button(id="likeButton")
-                        i(class="far fa-heart")
-                    if comments.length
-                        button(id="commentButton" class="collapsible")
-                            i(class="far fa-comment")
-                            span(class="totalcomments")=comments.length
-                    button(id="comment-creation-button" type=submit) Add Comments
-                    include commentsModal.pug
-            div(class="commentsDiv")
-                each comment in comments
-                    +usersComment(comment)
-                    
+                if question[0].answers.length > 0
+                each answer in question[0].answers
+                    +questionAnswers(answer)
+                    button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments
+                    +addCommentModal(answer)
+                    div(class="commentsDiv" id=`comment_for_answer-${answer.id}`)
+                        each comment in answer.comments
+                            +usersComment(comment)

@@ -10,34 +10,37 @@ router.get('/',csrfProtection, asyncHandler(async function(req, res, next) {
   const categories = await db.Category.findAll()
 
   // get 10 most recent questions for home page
-  const questions = await db.Question.findAll({
+  const questions = await db.Question.findAll(
+    {
     order: [['updatedAt', 'DESC']],
     limit: 10,
-    include: [{model: db.User,
-    as: 'user'}, {
-      model: db.Answer,
-    as:'answers',
-    limit: 1,
-    order: [['updatedAt', 'DESC']],
-    include: [{model: db.User}] }],
+    include: [
+      {model: db.User,
+      as: 'user'},
+      {model: db.Answer,
+      as:'answers',
+      limit: 1,
+      order: [['updatedAt', 'DESC']],
+    include: [{model: db.User, as: 'user'},
+      {model: db.Comment, as:'comments', include:[{model: db.User,as: 'user' }]}],
+  }],
   });
 
-  // get comments for a question
-  const comments = await db.Comment.findAll({
-    where : {
-      answerId : 1, //change after answer is configured
-    },
-    order: [['updatedAt', 'DESC']],
-    include: ['user'],
-  })
+  // console.log('/////////////////////////')
+  // console.log(questions[9].answers[0].comments[0].user)
+
+
 
   res.render( 'index', {
     questions,
     categories,
-    comments,
     csrfToken: req.csrfToken()});
 
 }));
+
+
+
+
 
 router.post("/", asyncHandler(async (req, res, next) =>{
   const search = req.body.search

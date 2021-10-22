@@ -6,7 +6,6 @@ append head
   link(rel="stylesheet" href="/stylesheets/index.css")
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css")
   link(rel="stylesheet" href="/stylesheets/answers.css")
-  link(rel="stylesheet" href="/stylesheets/questions.css")
   //- add page specific js
   script(src="/javascripts/comment.js" type="module" defer)
 
@@ -17,16 +16,15 @@ block content
       each category in categories
         +generateCategories(category)
     div(class="questions")
-      div(class="q_label") Questions
+      div(class="q_label")
         each question in questions
           +usersQuestion(question)
           if question.answers.length > 0
             div(class="answer_section")
               +questionAnswers(question.answers[0])
-                div(class="commentsDiv")
-                  each comment in comments
-                    +usersComment(comment)
-
+              div(class="commentsDiv" id=`comment_for_answer-${question.answers[0].id}`)
+                each comment in question.answers[0].comments
+                  +usersComment(comment)
     div(class="tbd")
         if user
             img(class="side_profile" src=(user.profilePhoto || 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png') style='width:75px; height:75px;')

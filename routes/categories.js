@@ -10,6 +10,7 @@ router.get("/categories", asyncHandler(async (req, res) => {
   const categories = await db.Category.findAll();
   res.json(categories);
 }));
+
 router.get("/categories/:categoryId(\\d+)", asyncHandler(async (req, res) => {
 
     const categoryId = req.params.categoryId;
