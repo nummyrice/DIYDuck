@@ -40,7 +40,7 @@ mixin usersQuestion(question)
 
 
 mixin usersComment(comment)
-    div(id="commentDiv" class="commentDiv")
+    div(id=`commentDiv-${comment.id}` class="commentDiv")
         div
         div( class='q_label comment_label') Comments
         div(class="q_header comment_header")
@@ -55,14 +55,7 @@ mixin usersComment(comment)
                 div(class='date_updated comment_date_updated')=comment.updatedAt
                 div
                 p(class="question comment")=comment.comment
-        //- if locals.autheticated = comment.userId
-        //- div(class="comment_edit_delete_buttons")
-        //-     button(class="comment_edit") Edit
-        //-     form(action=`/comments/${id}` method="delete")
-        //-         input(type="hidden" name="_csrf" value=csrfToken)
-        //-         button(id=`comment_delete-${id}` class="comment_delete") Delete
 
-    //- button(type="button", class='q_view_answers_button') View All Answers
 
 //- note: practice with class literals syntax
 mixin questionAnswers(answer)

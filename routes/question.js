@@ -41,14 +41,14 @@ router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req,res) => {
           as:'answers',
           order: [['updatedAt', 'DESC']],
         include: [{model: db.User, as: 'user'},
-          {model: db.Comment, as:'comments', order: [['updatedAt', 'DESC']], include:[{model: db.User,as: 'user' }]}],
+          {model: db.Comment, as:'comments', include:[{model: db.User,as: 'user' }]}],
       }],
       });
 
     //   console.log("////////////////////////////")
     //   console.log(question[0].answers)
 
-    let authtica
+    
 
     const categories = await db.Category.findAll();
 

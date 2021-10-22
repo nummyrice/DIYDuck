@@ -29,16 +29,35 @@ router.post('/comments/:answerId(\\d+)',csrfProtection, asyncHandler(async (req,
     }));
 
 
-    // router.delete('/comments/:id(\\d+)', async(req, res) => {
+    router.delete('/comments/:id(\\d+)', async(req, res) => {
+        const commentId = req.params.id
+        const comment = await db.Comment.findByPk(commentId)
+        if (comment) {
+            await comment.destroy()
+            res.json({message: "Success"})
+        } else {
+            res.json({message: "Failure"})
+        }
+
+        let answerId = comment.answerId
+
+        const answer = await db.Answer.findByPk(answerId)
+
+        let questionId = answer.questionId
+
+        res.redirect(`/questions/${questionId}`);
+
+    })
+
+    // router.put('/comments/:id(\\d+)', async(req, res) => {
     //     const commentId = req.params.id
     //     const comment = await db.Comment.findByPk(commentId)
     //     if (comment) {
-    //         await comment.destroy()
+    //         await comment.update()
     //         res.json({message: "Success"})
     //     } else {
     //         res.json({message: "Failure"})
     //     }
     // })
-
 
     module.exports = router;

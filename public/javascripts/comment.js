@@ -36,29 +36,24 @@ cancelComments.forEach((element) => {
     })
 })
 
-// const cancelComments = document.getElementById('comment_cancelButton')
-// cancelComments.addEventListener('click', async(e)=>{
-//     const modal = document.getElementById('commentModal')
-//     modal.style.display='none';
-// })
 
+const deleteComment = document.querySelectorAll('.comment_delete')
 
-// const deleteComment = document.querySelectorAll('.comment_delete')
+deleteComment.forEach((element) => {
+    element.addEventListener('click', async (e) => {
+        const commentId = e.target.id.split('-')[1]
+        const res = await fetch(`/comments/${commentId}`, {
+            method: 'DELETE'
+        })
 
-// for (let i = 0; i < deleteComment.length; i++) {
-//     const deleteButton = deleteComment[i];
-//     deleteButton.addEventListener('click', async (e) => {
-//         // e.preventDefault();
-//         console.log(e)
-//         const commentId = e.target.id.split('-')[1]
-//         const res = await fetch(`/comments/${commentId}`, {
-//             method: 'DELETE'
-//         })
-
-//         const data = await res.json()
-//         if (data.message === "Success") {
-//             const container = document.querySelector('.commentDiv')
-//             container.remove()
-//         }
-//     })
-// }
+        const data = await res.json()
+        if (data.message === "Success") {
+            const container = document.getElementById(`commentDiv-${commentId}`)
+            const button1 = document.getElementById(`comment_edit_button-${commentId}`)
+            const button2 = document.getElementById(`comment_delete_button-${commentId}`)
+            button1.remove()
+            button2.remove()
+            container.remove()
+        }
+    })
+});

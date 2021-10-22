@@ -37,3 +37,9 @@ block content
                     div(class="commentsDiv" id=`comment_for_answer-${answer.id}`)
                         each comment in answer.comments
                             +usersComment(comment)
+                            div(class='comment_edit_delete_buttons' id=`comment_edit_delete_buttons-${comment.id}`)
+                            button(id=`comment_edit_button-${comment.id}` class="comment_edit") Edit
+                            button(id=`comment_delete_button-${comment.id}` class="comment_delete") Delete
+
+
+//- if locals.userId = comment.userId
