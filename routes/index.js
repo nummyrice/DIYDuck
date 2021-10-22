@@ -19,22 +19,13 @@ router.get('/',csrfProtection, asyncHandler(async function(req, res, next) {
     as:'answers',
     limit: 1,
     order: [['updatedAt', 'DESC']],
-    include: [{model: db.User}] }],
+    include: [{model: db.User,
+      as: 'user'}] }],
   });
-
-  // get comments for a question
-  const comments = await db.Comment.findAll({
-    where : {
-      answerId : 1, //change after answer is configured
-    },
-    order: [['updatedAt', 'DESC']],
-    include: ['user'],
-  })
 
   res.render( 'index', {
     questions,
     categories,
-    comments,
     csrfToken: req.csrfToken()});
 
 }));
