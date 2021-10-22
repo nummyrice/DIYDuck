@@ -8,7 +8,7 @@ const { Op } = require("sequelize");
 /* GET home page. */
 router.get('/',csrfProtection, asyncHandler(async function(req, res, next) {
   const categories = await db.Category.findAll()
-  
+
   // get 10 most recent questions for home page
   const questions = await db.Question.findAll({
     order: [['updatedAt', 'DESC']],
@@ -21,7 +21,7 @@ router.get('/',csrfProtection, asyncHandler(async function(req, res, next) {
     order: [['updatedAt', 'DESC']],
     include: [{model: db.User}] }],
   });
-  
+
   // get comments for a question
   const comments = await db.Comment.findAll({
     where : {
@@ -30,7 +30,7 @@ router.get('/',csrfProtection, asyncHandler(async function(req, res, next) {
     order: [['updatedAt', 'DESC']],
     include: ['user'],
   })
-  
+
   res.render( 'index', {
     questions,
     categories,
@@ -51,5 +51,6 @@ router.post("/", asyncHandler(async (req, res, next) =>{
 
   res.render("searchResults", {search, questions})
 }))
+
 
 module.exports = router;

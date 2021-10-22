@@ -11,5 +11,6 @@ module.exports = (sequelize, DataTypes) => {
       as: 'questions',
       foreignKey: 'categoryId',
     })
+  };
   return Category;
 };
