@@ -26,10 +26,10 @@ mixin usersQuestion(question)
     div(class="like_comment_buttons")
         button(id="likeButton")
             i(class="far fa-heart")
-        if comments.length
-            button(id="commentButton" class="collapsible")
-                i(class="far fa-comment")
-                span(class="totalcomments")=comments.length
+        //- if comments.length
+        //-     button(id="commentButton" class="collapsible")
+        //-         i(class="far fa-comment")
+        //-         span(class="totalcomments")=comments.length
 
 mixin usersComment(comment)
     div(id="commentDiv" class="commentDiv")
@@ -71,4 +71,3 @@ mixin questionAnswers(answer)
     div.answer_buttons
       i(class="far fa-heart")
       i(class="far fa-comment")
-
