@@ -20,9 +20,9 @@ block content
       div(class="q_label") Questions
         each question in questions
           +usersQuestion(question)
-          //- if question.answers.length > 0
-          //-   div(class="answer_section")
-          //-     +questionAnswers(question.answers[0])
+          if question.answers.length > 0
+            div(class="answer_section")
+              +questionAnswers(question.answers[0])
                 //- div(class="commentsDiv")
                 //-   each comment in comments
                 //-     +usersComment(comment)

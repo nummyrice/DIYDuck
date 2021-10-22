@@ -13,28 +13,24 @@ router.get('/',csrfProtection, asyncHandler(async function(req, res, next) {
   const questions = await db.Question.findAll({
     order: [['updatedAt', 'DESC']],
     limit: 10,
-    include: [{model: db.User,
-    as: 'user'}, {
+    include: [{
+      model: db.User,
+      as: 'user'
+      }, {
       model: db.Answer,
-    as:'answers',
-    limit: 1,
-    order: [['updatedAt', 'DESC']],
-    include: [{model: db.User}] }],
+      as:'answers',
+      limit: 1,
+      order: [['updatedAt', 'DESC']],
+      include: [{
+        model: db.User,
+        as: 'user'
+      }]
+    }],
   });
-
-  // get comments for a question
-  const comments = await db.Comment.findAll({
-    where : {
-      answerId : 1, //change after answer is configured
-    },
-    order: [['updatedAt', 'DESC']],
-    include: ['user'],
-  })
 
   res.render( 'index', {
     questions,
     categories,
-    comments,
     csrfToken: req.csrfToken()});
 
 }));
@@ -46,7 +42,7 @@ router.post("/", asyncHandler(async (req, res, next) =>{
       where: {
         title: {[Op.substring]: `${search}`},
       },
-      include: 'user',
+      include: [{model: db.User, as: 'user'}],
   })
 
   res.render("searchResults", {search, questions})
