@@ -1,13 +1,10 @@
-# Express Project Skeleton
-
-Use this project skeleton as a starting point for structuring your app. Things to note
-* Sequelize configuration has not yet been added -- you will need to set that up yourself
-* You may find yourself wanting to use javascript -- js files can be added in `public/javascripts` and should be appended to the Pug templates as needed
-* CSS files can go in `public/stylesheets` and also will need to be added to Pug templates
 
 # What is DIY Duck?
 
 DIY Duck is an app that allows users to ask and answer questions pertaining to their DIY Projects.
+
+# How to start development environment
+
 
 # Technologies Used
 
@@ -16,6 +13,8 @@ DIY Duck is an app that allows users to ask and answer questions pertaining to t
 - Pug
 - CSS
 - Sequelize
+- Postbird
+- Heroku
 
 # Sequelize Quick Database Access
 ``` Use these commands ```
@@ -31,9 +30,9 @@ DIY Duck is an app that allows users to ask and answer questions pertaining to t
 
 # Live Site
 
-Go here:
+Go here: https://diy-duck.herokuapp.com/
 
-# Link to Wiki Docs
+# Wiki Docs
 
 Go here: https://github.com/nummyrice/DIYDuck/wiki
 
@@ -43,6 +42,6 @@ discuss two best features
 
 # Challenges
 
-challenges faced and how we overcame them
+- We had a difficult time trying to add functionality to the category column. Our plan was to have the buttons filter out questions when clicked, and only show the questions in the selected category. We ran into a lot of bugs with this feature, especially with the routes. To resolve this issue, we all came together and walked through the code, put our heads together, and tried out each other's advice until we found a solution that worked.
 
 # Best Code

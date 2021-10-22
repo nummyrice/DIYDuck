@@ -166,7 +166,8 @@ router.get('/users/:id(\\d+)', asyncHandler(async (req,res) => {
       userId: userId
     },
     include: [
-      'user'
+      {model: db.User,
+        as: 'user'}
     ]
   })
   res.render('profile', { user, userQuestions })
@@ -199,10 +200,25 @@ router.post('/users/editUser',asyncHandler(async (req,res) => {
   user.biography = biography
 
   user.save()
-  
+
   console.log(user)
 
   res.redirect(`/users/${userId}`)
+}))
+
+router.get('/users/:id(\\d+)/answers', asyncHandler(async (req,res) => {
+  const userId = req.params.id
+  const user = await db.User.findByPk(userId)
+  const userAnswers = await db.Answer.findAll({
+    where: {
+      userId: userId
+    },
+    include: [
+      {model: db.User,
+        as: 'user'}
+    ]
+  })
+  res.render('userAnswers', { user, userAnswers })
 }))
 
 /*

@@ -35,6 +35,15 @@ module.exports = {
     profession: 'Gardener',
     createdAt: new Date(),
     updatedAt: new Date(),
+  },{
+    name: 'Demo',
+    email: 'demo@gmail.com',
+    hashedPassword: 'Demo@123',
+    biography: 'Hello, this is Demo',
+    profilePhoto: 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png',
+    profession: 'Testing Apps',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   }], {});
   },
 

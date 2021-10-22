@@ -15,8 +15,12 @@ block content
                     h2(class='profession')=user.profession
                 div
                     h3(class='bio')=user.biography
+                .hyperlinks
+                    a(href=`/users/${user.id}`) Questions
+                    a(href=`/users/${user.id}/answers`) Answers
                 .questionBody
                     .questionContainer
+                        h1 Questions:
                         each question in userQuestions
                             +usersQuestion(question)
                 .edit

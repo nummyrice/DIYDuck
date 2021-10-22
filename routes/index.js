@@ -49,7 +49,7 @@ router.post("/", asyncHandler(async (req, res, next) =>{
       where: {
         title: {[Op.substring]: `${search}`},
       },
-      include: 'user',
+      include: [{model: db.User, as: 'user'}],
   })
 
   res.render("searchResults", {search, questions})
