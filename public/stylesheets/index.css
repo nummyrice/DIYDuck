@@ -213,12 +213,14 @@ a{
     content: "";
     clear: both;
     display: table;
+    margin-left: 30px;
   }
 
   .comment_label {
     display: inline-block;
     width: 300px;
     text-align: left;
+    margin-left: 40px ;
     font-weight: bold;
     font-size:20px;
   }
@@ -227,6 +229,7 @@ a{
       padding:1em;
       height:300px;
       width:400px;
+      margin-left: 30px ;
   }
 
   .question_label {
@@ -250,3 +253,5 @@ a{
   #question_edit_delete_buttons{
       margin-bottom: 10px;
   }
+
+

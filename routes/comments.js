@@ -49,15 +49,28 @@ router.post('/comments/:answerId(\\d+)',csrfProtection, asyncHandler(async (req,
 
     })
 
-    // router.put('/comments/:id(\\d+)', async(req, res) => {
-    //     const commentId = req.params.id
-    //     const comment = await db.Comment.findByPk(commentId)
-    //     if (comment) {
-    //         await comment.update()
-    //         res.json({message: "Success"})
-    //     } else {
-    //         res.json({message: "Failure"})
-    //     }
-    // })
+    router.post('/comments/:id(\\d+)/edit',csrfProtection, async(req, res) => {
+      const commentId = req.params.id
+      const {
+          comment
+        } = req.body;
+
+      const oldComment = await db.Comment.findByPk(commentId)
+
+      if (oldComment) {
+          await oldComment.update({
+              comment : comment
+          });
+      }
+
+      let answerId = oldComment.answerId
+
+      const answer = await db.Answer.findByPk(answerId)
+
+      let questionId = answer.questionId
+
+      res.redirect(`/questions/${questionId}`)
+   })
+
 
     module.exports = router;
