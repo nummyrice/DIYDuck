@@ -38,7 +38,7 @@ module.exports = {
   },{
     name: 'Demo',
     email: 'demo@gmail.com',
-    hashedPassword: 'Demo@123',
+    hashedPassword: '$2a$10$NuMVP6tiMiJaPVpdFxo21ezyU9L3dfDKClHNBhYRs9J7wE1nKP8Z2',
     biography: 'Hello, this is Demo',
     profilePhoto: 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png',
     profession: 'Testing Apps',
