@@ -61,16 +61,18 @@ app.use(categoryRouter)
 app.use(commentRouter)
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  res.render('404Page')
-  next(createError(404));
-});
+app.use(errorHandler = (req,res,next) => {
+  const err = new Error()
+  err.message = "The requests page couldn't be found"
+  err.status = 404
+  return next(err)
+})
 
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   if(err.status === 404){
-    res.render('/404page')
+    res.render('404Page')
   }
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

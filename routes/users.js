@@ -158,9 +158,9 @@ router.post('/logout', (req, res) => {
   res.redirect('/');
 })
 
-router.get('/users/:id(\\d+)', asyncHandler(async (req,res) => {
+router.get('/users/:id(\\d+)', csrfProtection, asyncHandler(async (req,res) => {
   const userId = req.params.id
-  const user = await db.User.findByPk(userId)
+  const theUser = await db.User.findByPk(userId)
   const userQuestions = await db.Question.findAll({
     where: {
       userId: userId
@@ -170,21 +170,21 @@ router.get('/users/:id(\\d+)', asyncHandler(async (req,res) => {
         as: 'user'}
     ]
   })
-  res.render('profile', { user, userQuestions })
+  res.render('profile', { theUser, userQuestions, csrfToken: req.csrfToken()  })
 }))
 // this route needs to be changed to /users/:id/delete to be restful
-router.post('/users/delete',asyncHandler(async (req,res) => {
+router.post('/users/delete', asyncHandler(async (req,res) => {
     const { userId } = req.body
     const user = await db.User.findByPk(userId)
     await user.destroy()
     res.redirect('/');
 }))
 
-router.get('/users/edit',asyncHandler(async (req,res) => {
-  res.render('edit');
+router.get('/users/edit', csrfProtection, asyncHandler(async (req,res) => {
+  res.render('edit', { csrfToken: req.csrfToken() });
 }))
 
-router.post('/users/editUser',asyncHandler(async (req,res) => {
+router.post('/users/editUser',csrfProtection,asyncHandler(async (req,res) => {
   const{
     name,
     profession,
@@ -201,24 +201,22 @@ router.post('/users/editUser',asyncHandler(async (req,res) => {
 
   user.save()
 
-  console.log(user)
 
   res.redirect(`/users/${userId}`)
 }))
 
-router.get('/users/:id(\\d+)/answers', asyncHandler(async (req,res) => {
+router.get('/users/:id(\\d+)/answers',csrfProtection,asyncHandler(async (req,res) => {
   const userId = req.params.id
   const user = await db.User.findByPk(userId)
   const userAnswers = await db.Answer.findAll({
     where: {
       userId: userId
     },
-    include: [
-      {model: db.User,
-        as: 'user'}
-    ]
+    include: [{model: db.User, as: 'user'},
+      {model: db.Comment, as:'comments', include:[{model: db.User,as: 'user' }]}]
   })
-  res.render('userAnswers', { user, userAnswers })
+  res.render('userAnswers', { user, userAnswers, csrfToken: req.csrfToken()
+  })
 }))
 
 /*

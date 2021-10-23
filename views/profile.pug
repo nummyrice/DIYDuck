@@ -8,27 +8,28 @@ block content
     body
         if user
             .container
-                img(src=(user.profilePhoto || 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png') class='profilePicture')
+                img(src=(theUser.profilePhoto || 'https://cdn.discordapp.com/attachments/889944469359718421/900129385720479744/whiteDuck.png') class='profilePicture')
                 div
-                    h1(class='userName')=user.name
+                    h1(class='userName')=theUser.name
                 div
-                    h2(class='profession')=user.profession
+                    h2(class='profession')=theUser.profession
                 div
-                    h3(class='bio')=user.biography
+                    h3(class='bio')=theUser.biography
                 .hyperlinks
-                    a(href=`/users/${user.id}`) Questions
-                    a(href=`/users/${user.id}/answers`) Answers
+                    a(href=`/users/${theUser.id}`) Questions
+                    a(href=`/users/${theUser.id}/answers`) Answers
                 .questionBody
                     .questionContainer
                         h1 Questions:
                         each question in userQuestions
                             +usersQuestion(question)
-                .edit
-                    a(href='/users/edit') Edit Account
-                div(class='deleteForm')
-                    form(action="/users/delete" method="POST")
-                        input(type='hidden' value=user.id name='userId')
-                        button(type='submit' class='deleteButton') Delete Account
+                if locals.user.id === theUser.id
+                    .edit
+                        a(href='/users/edit') Edit Account
+                    .deleteForm
+                        form(action="/users/delete" method="POST")
+                            input(type='hidden' value=user.id name='userId')
+                            button(type='submit' class='deleteButton') Delete Account
         //- div(class='divContainer')
         //-         div(class='questionsContainer')
         //-             h1 Questions
