@@ -4,6 +4,7 @@ block content
   body
     div(class='editForm')
       form(action=`/users/editUser` method="post")
+        input(type='hidden' name='_csrf' value=csrfToken)
         input(type='hidden' value=user.id name='userId')
         label(for='name') Edit Name:
         br
