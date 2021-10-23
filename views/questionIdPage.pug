@@ -46,4 +46,5 @@ block content
                             if locals.user.id === comment.userId
                                 div(class='comment_edit_delete_buttons' id=`comment_edit_delete_buttons-${comment.id}`)
                                     button(id=`comment_edit_button-${comment.id}` class="comment_edit") Edit Comment
+                                    +editCommentModal(comment)
                                     button(id=`comment_delete_button-${comment.id}` class="comment_delete") Delete Comment

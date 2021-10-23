@@ -57,3 +57,22 @@ deleteComment.forEach((element) => {
         }
     })
 });
+
+
+const editComments = document.querySelectorAll('.comment_edit')
+editComments.forEach((element) => {
+    element.addEventListener('click', async (e) => {
+        const id = e.target.id.split('-')[1]
+        const modal = document.getElementById(`editCommentModal-${id}`)
+        modal.style.display='block';
+    })
+})
+
+const cancelEditComments = document.querySelectorAll('.edit_comment_cancelButton')
+cancelEditComments.forEach((element) => {
+    element.addEventListener('click', async (e) => {
+        const id = e.target.id.split('-')[1]
+        const modal = document.getElementById(`editcommentModal-${id}`)
+        modal.style.display='none';
+    })
+})

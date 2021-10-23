@@ -3,12 +3,25 @@ mixin addCommentModal(answer)
         form(class='comment_modal_content' action=`/comments/${answer.id}` method='post')
             input(type='hidden' name='_csrf' value=csrfToken)
             div(class='comment_container')
-            label(for='comment') Type your comment
+            label(for='comment' class="comment_label") Type your comment
             br
             textarea(class="comment_textarea" name='comment' required)
             div(class='comment_eraser')
                 button(class='comment_cancelButton' type='button' id=`comment_cancelButton-${answer.id}`) Cancel
                 button(class='comment_submitButton' type='submit') Submit
+
+
+mixin editCommentModal(comment)
+    div(id=`editCommentModal-${comment.id}` class='comment_modal')
+        form(class='comment_modal_content' action=`/comments/${comment.id}/edit` method='post')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            div(class='comment_container')
+            label(for='comment' class="comment_label") Type your comment
+            br
+            textarea(class="comment_textarea" name='comment' required)=comment.comment
+            div(class='comment_eraser')
+                button(class='edit_comment_cancelButton' type='button' id=`edit_comment_cancelButton-${comment.id}`) Cancel
+                button(class='edit_comment_submitButton' type='submit') Submit
 
 
 mixin editQuestionModal(question,categories)

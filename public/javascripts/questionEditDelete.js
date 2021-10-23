@@ -25,8 +25,4 @@ cancelEditQuestion.addEventListener('click', async (e) => {
     modal.style.display='none';
 })
 
-// const submitEditQuestion = document.getElementById('question_edit_submitButton')
-// submitEditQuestion.addEventListener('click', async (e) => {
-//     const modal = document.getElementById(`editQuestionModal`)
-//     modal.style.display='none';
-// })
+
