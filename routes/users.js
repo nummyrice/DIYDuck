@@ -172,6 +172,7 @@ router.get('/users/:id(\\d+)', csrfProtection, asyncHandler(async (req,res) => {
   })
   res.render('profile', { theUser, userQuestions, csrfToken: req.csrfToken()  })
 }))
+
 // this route needs to be changed to /users/:id/delete to be restful
 router.post('/users/delete', asyncHandler(async (req,res) => {
     const { userId } = req.body
