@@ -10,6 +10,7 @@ append head
 
 
     script(src="/javascripts/comment.js" type="module" defer)
+    script(src="/javascripts/questionEditDelete.js" type="module" defer)
 
 block content
     div(class="home-container")
@@ -20,6 +21,11 @@ block content
         div(class="questions")
            div(id="posted-q" class="posted-q")
                 div(class='q_label question_label') Question
+                if locals.user.id === question[0].userId
+                    div(id = 'question_edit_delete_buttons')
+                        button(id=`question_edit_button` class="question_edit") Edit Question
+                        +editQuestionModal(question[0],categories)
+                        button(id=`question_delete_button-${question[0].id}` class="question_delete") Delete Question
                 div(class="q_header")
                     img(class='q_profile_photo' id=`${question[0].userId}` src=question[0].user.profilePhoto)
                     div(class='q_header_info')
@@ -37,9 +43,7 @@ block content
                     div(class="commentsDiv" id=`comment_for_answer-${answer.id}`)
                         each comment in answer.comments
                             +usersComment(comment)
-                            div(class='comment_edit_delete_buttons' id=`comment_edit_delete_buttons-${comment.id}`)
-                            button(id=`comment_edit_button-${comment.id}` class="comment_edit") Edit
-                            button(id=`comment_delete_button-${comment.id}` class="comment_delete") Delete
-
-
-//- if locals.authenticated
+                            if locals.user.id === comment.userId
+                                div(class='comment_edit_delete_buttons' id=`comment_edit_delete_buttons-${comment.id}`)
+                                    button(id=`comment_edit_button-${comment.id}` class="comment_edit") Edit Comment
+                                    button(id=`comment_delete_button-${comment.id}` class="comment_delete") Delete Comment
