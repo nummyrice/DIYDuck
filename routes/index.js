@@ -42,7 +42,7 @@ router.get('/',csrfProtection, asyncHandler(async function(req, res, next) {
 
 
 
-router.post("/", asyncHandler(async (req, res, next) =>{
+router.post("/",csrfProtection, asyncHandler(async (req, res, next) =>{
   const search = req.body.search
   console.log(req.body)
   const questions = await db.Question.findAll({
@@ -52,7 +52,7 @@ router.post("/", asyncHandler(async (req, res, next) =>{
       include: [{model: db.User, as: 'user'}],
   })
 
-  res.render("searchResults", {search, questions})
+  res.render("searchResults", {search, questions, csrfToken: req.csrfToken() })
 }))
 
 

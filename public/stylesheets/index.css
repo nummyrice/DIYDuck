@@ -226,7 +226,7 @@ a{
   .comment_textarea{
       padding:1em;
       height:300px;
-      width:650px;
+      width:400px;
   }
 
   .question_label {
@@ -245,4 +245,8 @@ a{
     color:white;
     font-weight: bolder;
     border-radius: 1em;
+  }
+
+  #question_edit_delete_buttons{
+      margin-bottom: 10px;
   }

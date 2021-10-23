@@ -11,6 +11,26 @@ mixin addCommentModal(answer)
                 button(class='comment_submitButton' type='submit') Submit
 
 
+mixin editQuestionModal(question,categories)
+  div(id='editQuestionModal' class='modal')
+    form(class='modal-content' action=`/questions/${question.id}/edit` method='post')
+      input(type='hidden' name='_csrf' value=csrfToken)
+      div(class='editcontainer')
+        label(for='title') Title
+        input(type='text' name='title' required value=question.title)
+        br
+        label(for='content') Type your question here
+        input(type='text' placeholder='Start your question with "What","How","Why",etc.' name='content' required value=question.content)
+        br
+        label(for="categoryId") Catogory:
+        select(id="categorySelector" class="categorySelector"  name="categoryId" required="required" )
+          each category in categories
+            option(value=category.id id='selectOption' selected=category.id===question.id)=category.name
+        div(class='eraser')
+          button(class='cancelButton' type='button' id='question_edit_cancelButton') Cancel
+          button(class='submitButton' type='submit' id='question_edit_submitButton') Submit
+
+
 mixin validationErrorSummary(errors)
   if errors
     div(class='alert' role='alert')
