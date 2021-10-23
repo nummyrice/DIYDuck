@@ -43,9 +43,4 @@ block content
                     +addCommentModal(answer)
                     div(class="commentsDiv" id=`comment_for_answer-${answer.id}`)
                         each comment in answer.comments
-                            +usersComment(comment)
-                            if locals.user && locals.user.id === comment.userId
-                                div(class='comment_edit_delete_buttons' id=`comment_edit_delete_buttons-${comment.id}`)
-                                    button(id=`comment_edit_button-${comment.id}` class="comment_edit") Edit Comment
-                                    +editCommentModal(comment)
-                                    button(id=`comment_delete_button-${comment.id}` class="comment_delete") Delete Comment
+                            +usersComment(comment, true)

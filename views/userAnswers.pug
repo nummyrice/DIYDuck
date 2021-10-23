@@ -27,4 +27,4 @@ block content
                             +questionAnswers(answer)
                             div(class="commentsDiv" id=`comment_for_answer-${answer.id}`)
                                 each comment in answer.comments
-                                    +usersComment(comment)
+                                    +usersComment(comment, false)
