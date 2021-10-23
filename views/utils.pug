@@ -112,8 +112,9 @@ mixin questionAnswers(answer)
         p.question=answer.answer
         div(class="like_comment_buttons")
             button(id="likeButton")
-                i(class="far fa-heart")
+              i(class="far fa-heart")
             if answer.comments.length
                 button(id=`show_comment_for_answer-${answer.id}` class="collapsible show_comment_button")
-                    i(id=`show_comment_icon-${answer.id}` class="far fa-comment")
-                    span(class="totalcomments")=answer.comments.length
+                  i(id=`show_comment_icon-${answer.id}` class="far fa-comment")
+                  span(class="totalcomments")=answer.comments.length
+            button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments

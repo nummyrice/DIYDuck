@@ -39,7 +39,6 @@ block content
                 if question[0].answers.length > 0
                 each answer in question[0].answers
                     +questionAnswers(answer)
-                    button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments
                     +addCommentModal(answer)
                     div(class="commentsDiv" id=`comment_for_answer-${answer.id}`)
                         each comment in answer.comments
