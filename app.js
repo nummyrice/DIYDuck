@@ -15,9 +15,8 @@ const commentRouter = require('./routes/comments')
 const answerRouter = require('./routes/answers')
 const { restoreUser } = require('./auth');
 
+const { sessionSecret } = require('./config');
 
-
-const { sessionSecret } = require('./config')
 
 const app = express();
 

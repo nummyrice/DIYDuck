@@ -8,6 +8,8 @@ append head
   link(rel="stylesheet" href="/stylesheets/answers.css")
   //- add page specific js
   script(src="/javascripts/comment.js" type="module" defer)
+  script(src='/javascripts/likes.js' type='module' defer)
+
 
 block content
   div(class="home-container")
@@ -21,7 +23,7 @@ block content
           +usersQuestion(question)
           if question.answers.length > 0
             div(class="answer_section")
-              +questionAnswers(question.answers[0], false)
+              +questionAnswers(question.answers[0], false, question.id)
               div(class="commentsDiv" id=`comment_for_answer-${question.answers[0].id}`)
                 each comment in question.answers[0].comments
                   +usersComment(comment, false)

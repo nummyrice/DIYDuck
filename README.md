@@ -44,6 +44,7 @@ Go here: https://github.com/nummyrice/DIYDuck/wiki
 
 # Best Code
 
+
 ## Pug Mixins
 - Pug was essential to making elements and adding functionality to our page, while keeping the code modular.
 
@@ -132,7 +133,6 @@ router.post('/comments/:answerId(\\d+)',csrfProtection, asyncHandler(async (req,
         res.redirect(`/questions/${questionId}`);
 
     }));
-
 
 
 ## Nested Database Query
