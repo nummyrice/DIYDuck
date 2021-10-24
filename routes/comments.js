@@ -38,15 +38,6 @@ router.post('/comments/:answerId(\\d+)',csrfProtection, asyncHandler(async (req,
         } else {
             res.json({message: "Failure"})
         }
-
-        let answerId = comment.answerId
-
-        const answer = await db.Answer.findByPk(answerId)
-
-        let questionId = answer.questionId
-
-        res.redirect(`/questions/${questionId}`);
-
     })
 
     router.post('/comments/:id(\\d+)/edit',csrfProtection, async(req, res) => {

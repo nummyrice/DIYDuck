@@ -56,11 +56,12 @@ if(deleteComment){
             const data = await res.json()
             if (data.message === "Success") {
                 const container = document.getElementById(`commentDiv-${commentId}`)
-                const button1 = document.getElementById(`comment_edit_button-${commentId}`)
-                const button2 = document.getElementById(`comment_delete_button-${commentId}`)
-                button1.remove()
-                button2.remove()
+                // const button1 = document.getElementById(`comment_edit_button-${commentId}`)
+                // const button2 = document.getElementById(`comment_delete_button-${commentId}`)
+                // button1.remove()
+                // button2.remove()
                 container.remove()
+                window.location.reload();
             }
         })
     });

@@ -96,7 +96,7 @@ mixin usersComment(comment, showCommentEditDeleteButtons )
 
 
 mixin questionAnswers(answer, showAddCommentButton)
-  div.answer_body
+  div(class = "answer_body" id = `answer_body-${answer.id}`)
     div(class=' answer_label') Answer
     div.answer_head
       a.answer_a(href=`/users/${answer.userId}`)
@@ -110,6 +110,7 @@ mixin questionAnswers(answer, showAddCommentButton)
         div
         div(class='answer_date_updated')=answer.updatedAt
         p.question=answer.answer
+<<<<<<< HEAD
         div.answer_buttons
           div(class='like_field' id=`likeNum_${answer.id}`)
             i(class="far fa-heart" id=`heart_${answer.id}`)
@@ -120,3 +121,16 @@ mixin questionAnswers(answer, showAddCommentButton)
                 span(class="totalcomments")=answer.comments.length
           if showAddCommentButton && locals.user
             button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments
+=======
+        div(class="like_comment_buttons")
+            button(id="likeButton")
+              i(class="far fa-heart")
+            if answer.comments.length
+                button(id=`show_comment_for_answer-${answer.id}` class="collapsible show_comment_button")
+                  i(id=`show_comment_icon-${answer.id}` class="far fa-comment")
+                  span(class="totalcomments")=answer.comments.length
+            if showAddCommentButton && locals.user
+              button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments
+            if locals.user && locals.user.id === answer.userId
+              button(id=`answer_delete_button-${answer.id}` class="answer-delete-button" type='button') Delete Answer
+>>>>>>> e5ef0cb1ecc916396f77afea109bf02c9e004c8c

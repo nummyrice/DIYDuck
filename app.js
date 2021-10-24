@@ -12,6 +12,7 @@ const usersRouter = require('./routes/users');
 const questionRouter = require('./routes/question')
 const categoryRouter = require('./routes/categories')
 const commentRouter = require('./routes/comments')
+const answerRouter = require('./routes/answers')
 const { restoreUser } = require('./auth');
 
 
@@ -59,6 +60,7 @@ app.use(usersRouter);
 app.use('/questions', questionRouter);
 app.use(categoryRouter)
 app.use(commentRouter)
+app.use(answerRouter)
 
 // catch 404 and forward to error handler
 app.use(errorHandler = (req,res,next) => {
