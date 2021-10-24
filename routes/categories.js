@@ -5,7 +5,7 @@ const { csrfProtection, asyncHandler } = require("./utils.js");
 const { check, validationResult } = require("express-validator");
 const db = require("../db/models");
 
-//
+// Generate categories from database for drop-down in "Ask a Question"
 router.get("/categories", asyncHandler(async (req, res) => {
   const categories = await db.Category.findAll();
   res.json(categories);

@@ -1,6 +1,5 @@
 const button = document.getElementById('questionButton')
 button.addEventListener('click', async (e) => {
-
     const selectOption = document.getElementById('selectOption')
     if(!selectOption){
     const res = await fetch('/categories', {
@@ -9,7 +8,7 @@ button.addEventListener('click', async (e) => {
 
     const categories = await res.json()
 
-    console.log(categories)
+    // console.log(categories.length)
 
 
     const categorySelector = document.getElementById('categorySelector')

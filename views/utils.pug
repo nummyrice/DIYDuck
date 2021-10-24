@@ -23,9 +23,8 @@ mixin usersQuestion(question)
     span(class="q_title")
         a(class="questionLink" href=`/questions/${question.id}`)=question.title
     p(class="question")=question.content
-    div(class="like_comment_buttons")
-        button(id="likeButton")
-            i(class="far fa-heart")
+
+
         //- if comments.length
         //-     button(id="commentButton" class="collapsible")
         //-         i(class="far fa-comment")
@@ -73,5 +72,7 @@ mixin questionAnswers(answer)
           div(class='answer_date_updated')=answer.updatedAt
     p.question=answer.answer
     div.answer_buttons
-      i(class="far fa-heart")
+      div(class='like_field' id=`likeNum_${answer.id}`)
+        i(class="far fa-heart" id=`heart_${answer.id}`)
+        span(class="like_count" id=`count_${answer.id}`) 0
       i(class="far fa-comment")

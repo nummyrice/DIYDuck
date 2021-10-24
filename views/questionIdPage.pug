@@ -6,8 +6,10 @@ append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css")
+  link(rel="stylesheet" href="/stylesheets/answers.css")
   //- add page specific js
   script(src="/javascripts/comment.js" type="module" defer)
+  script(src='/javascripts/likes.js' type='module' defer)
 
 block content
   div(class="home-container")
@@ -45,4 +47,3 @@ block content
             div(class="commentsDiv")
                 each comment in comments
                     +usersComment(comment)
-                    
