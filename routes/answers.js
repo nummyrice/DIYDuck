@@ -5,7 +5,8 @@ const db = require('../db/models');
 const { csrfProtection, asyncHandler } = require('./utils.js');
 const { requireAuth } = require('../auth');
 
-// posts question to the database
+
+// posts answers to the database
 router.post("/answers", csrfProtection, asyncHandler(async(req, res, next) => {
   const questionId = req.body.questionId;
   const userId = res.locals.user.id;
@@ -23,6 +24,40 @@ router.post("/answers", csrfProtection, asyncHandler(async(req, res, next) => {
     res.redirect('/');
   }
 }));
+
+
+// updates answers on the database
+router.post('/answers/:answerId(\\d+)', csrfProtection, requireAuth, asyncHandler(async (req, res, next) => {
+  const answerId = req.params.answerId;
+  const userId = res.locals.user.id;
+  const questionId = req.body.questionId;
+  const answerEditText = req.body.answerEditText;
+  try {
+    await db.Answer.update({
+      answer: answerEditText
+      },{
+        where: {
+          id: answerId,
+        }
+      })
+  } catch (error) {
+    console.log('//////////////////')
+    console.log('Error updating answer')
+    if (questionId) {
+      res.redirect(`/questions/${questionId}`);
+    }
+    res.redirect(`/users/${userId}/answers`);
+  }
+  // if update is succesfully,  this route will be taken
+  console.log('////////////////////')
+  console.log('Successfully updated answer')
+
+  if (questionId) {
+    res.redirect(`/questions/${questionId}`);
+  }
+  res.redirect(`/users/${userId}/answers`);
+}))
+
 
 // generates like totals for each answer on page
 router.get("/answers/:answerId(\\d+)/likes", asyncHandler(async (req, res, next)=> {
@@ -43,10 +78,11 @@ router.get("/answers/:answerId(\\d+)/likes", asyncHandler(async (req, res, next)
     res.json({likes, likeStatus});
   } catch(error) {
     console.log('<like loading error>', error);
-  }
+    res.json({likes});
+  };
+}));
 
 
-  }));
   // creates like
   router.post("/answers/:answerId(\\d+)/likes", requireAuth, asyncHandler(async (req, res) => {
     const answerId = req.params.answerId;
@@ -63,6 +99,8 @@ router.get("/answers/:answerId(\\d+)/likes", asyncHandler(async (req, res, next)
     console.log('successfully unliked answer');
     res.json({message: 'Success'});
   }));
+
+
 
   // deletes like
   router.delete("/answers/:answerId(\\d+)/likes", requireAuth, asyncHandler(async (req, res, next) => {
@@ -82,27 +120,5 @@ router.get("/answers/:answerId(\\d+)/likes", asyncHandler(async (req, res, next)
     console.log('successfully unliked answer');
     res.json({message: 'Success'});
   }));
-
-  // authorizes likes
-  // router.get("/answers/:answerId(\\d+)/likes/auth", requireAuth, asyncHandler((req, res, next) => {
-  //   const answerId = req.params.answerId;
-  //   const userId = res.locals.user.id;
-  //   const likeExists = await db.Like.findAll({
-  //     where:{
-  //       userId: userId,
-  //       answerId: answerId,
-  //     }
-  //   });
-
-  //   if (likeExists) {
-  //     // console.log('////////////////')
-  //     // console.log('Success');
-  //     res.json({message: 'Success'});
-  //   } else {
-  //     // console.log('////////////////')
-  //     // console.log('Failure');
-  //     res.json({message: 'Failure'});
-  //   };
-  // }));
 
   module.exports = router;

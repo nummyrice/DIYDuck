@@ -15,10 +15,8 @@ const commentRouter = require('./routes/comments');
 const answersRouter = require('./routes/answers');
 const { restoreUser, requireAuth } = require('./auth');
 
-
-
 const { sessionSecret } = require('./config');
-// const { like } = require('sequelize/types/lib/operators');
+
 
 const app = express();
 

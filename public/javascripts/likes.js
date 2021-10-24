@@ -12,12 +12,11 @@ window.addEventListener("DOMContentLoaded", event => {
             method: 'GET'
         });
         const elementLikes = await res.json();
-
         const likeCount = document.querySelector(`#count_${answerId}`);
+        likeCount.innerText = elementLikes.likes.length;
 
         const faHeart = document.querySelector(`#heart_${answerId}`);
         if (faHeart) {
-            likeCount.innerText = elementLikes.likes.length;
             if (elementLikes.likeStatus.length) {
                 faHeart.classList.remove('far');
                 faHeart.classList.add('fas');

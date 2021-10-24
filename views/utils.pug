@@ -106,7 +106,7 @@ mixin usersComment(comment, showCommentEditDeleteButtons )
               button(id=`comment_delete_button-${comment.id}` class="comment_delete") Delete Comment
 
 
-mixin questionAnswers(answer, showAddCommentButton)
+mixin questionAnswers(answer, showAddCommentButton, questionId)
   div.answer_body
     div(class=' answer_label') Answer
     div.answer_head
@@ -131,3 +131,11 @@ mixin questionAnswers(answer, showAddCommentButton)
                 span(class="totalcomments")=answer.comments.length
           if showAddCommentButton && locals.user
             button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments
+        if locals.authenticated && (locals.user.id === answer.userId)
+          div(class="edit_answer_block")
+            form(action=`/answers/${answer.id}` method='post')
+              input(type='hidden' name='questionId' value=questionId)
+              input(type='hidden' name='_csrf' value=csrfToken)
+              label(for='answerEditText' class="post_answer_label") Edit your answer
+              input(type='textArea' name='answerEditText' class='post_answer_textarea')
+              button(class="answer_edit_btn" type='submit') Submit
