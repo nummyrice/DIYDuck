@@ -220,20 +220,7 @@ router.get('/users/:id(\\d+)/answers',csrfProtection,asyncHandler(async (req,res
   })
 }))
 
-/*
- user/:id
--- if user is authorized and id matches this url
-  -- display edit and delete options
--- all other display options are the same for all users (perhaps different styling?)
-  --display user bio
-  --display profession
-  --display user photo
-  --display asked questions
-  -- display answers
-  --display comments
-  --display liked answers
-  --display most active categories for user???
-*/
+
 
 
 module.exports = router;
