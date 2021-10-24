@@ -45,3 +45,10 @@ discuss two best features
 - We had a difficult time trying to add functionality to the category column. Our plan was to have the buttons filter out questions when clicked, and only show the questions in the selected category. We ran into a lot of bugs with this feature, especially with the routes. To resolve this issue, we all came together and walked through the code, put our heads together, and tried out each other's advice until we found a solution that worked.
 
 # Best Code
+
+
+# font awesome style guide
+<!-- <i class="fas fa-camera"></i>  solid style -->
+<!-- <i class="far fa-camera"></i>  regular style -->
+<!-- <i class="fal fa-camera"></i>  light style -->
+<!-- <i class="fad fa-camera"></i>  duotone style -->

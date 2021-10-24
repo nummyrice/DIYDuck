@@ -31,10 +31,10 @@ if(addQuestionButton){
     })
     }
 
-const cancelButton = document.getElementById('cancelButton')
-if(cancelButton){
-    cancelButton.addEventListener('click', async(e)=>{
-        const modal = document.getElementById('questionModal')
+const cancelButton = document.getElementById('cancelButton');
+    if(cancelButton){
+        cancelButton.addEventListener('click', async(e)=>{
+        const modal = document.getElementById('questionModal');
         modal.style.display='none';
-    })}
-    
+    }
+)};

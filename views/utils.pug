@@ -110,12 +110,13 @@ mixin questionAnswers(answer, showAddCommentButton)
         div
         div(class='answer_date_updated')=answer.updatedAt
         p.question=answer.answer
-        div(class="like_comment_buttons")
-            button(id="likeButton")
-              i(class="far fa-heart")
-            if answer.comments.length
-                button(id=`show_comment_for_answer-${answer.id}` class="collapsible show_comment_button")
-                  i(id=`show_comment_icon-${answer.id}` class="far fa-comment")
-                  span(class="totalcomments")=answer.comments.length
-            if showAddCommentButton && locals.user
-              button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments
+        div.answer_buttons
+          div(class='like_field' id=`likeNum_${answer.id}`)
+            i(class="far fa-heart" id=`heart_${answer.id}`)
+            span(class="like_count" id=`count_${answer.id}`) 0
+          if answer.comments.length
+              button(id=`show_comment_for_answer-${answer.id}` class="collapsible show_comment_button")
+                i(id=`show_comment_icon-${answer.id}` class="far fa-comment")
+                span(class="totalcomments")=answer.comments.length
+          if showAddCommentButton && locals.user
+            button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments

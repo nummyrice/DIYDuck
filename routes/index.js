@@ -10,27 +10,35 @@ router.get('/',csrfProtection, asyncHandler(async function(req, res, next) {
   const categories = await db.Category.findAll()
 
   // get 10 most recent questions for home page
-  const questions = await db.Question.findAll(
-    {
+  const questions = await db.Question.findAll({
     order: [['updatedAt', 'DESC']],
     limit: 10,
-    include: [
-      {model: db.User,
-      as: 'user'},
-      {model: db.Answer,
+    include: [{
+      model: db.User,
+      as: 'user'},{
+      model: db.Answer,
       as:'answers',
       limit: 1,
       order: [['updatedAt', 'DESC']],
-    include: [{model: db.User, as: 'user'},
-      {model: db.Comment, as:'comments', include:[{model: db.User,as: 'user' }]}],
-  }],
+      include: [{
+        model: db.User,
+        as: 'user'},{
+        model: db.Like,
+        as: 'likes',
+        include: [{
+          model: db.User,
+          as: 'user'
+        }]
+        }, {
+        model: db.Comment,
+        as:'comments',
+        include:[{
+          model: db.User,
+          as: 'user'
+        }]
+      }],
+    }],
   });
-
-  // console.log('/////////////////////////')
-  // console.log(questions[9].answers[0].comments[0].user)
-
-
-
   res.render( 'index', {
     questions,
     categories,
@@ -38,10 +46,7 @@ router.get('/',csrfProtection, asyncHandler(async function(req, res, next) {
 
 }));
 
-
-
-
-
+// search for questions
 router.post("/",csrfProtection, asyncHandler(async (req, res, next) =>{
   const search = req.body.search
   console.log(req.body)
@@ -52,7 +57,72 @@ router.post("/",csrfProtection, asyncHandler(async (req, res, next) =>{
       include: [{model: db.User, as: 'user'}],
   })
 
-  res.render("searchResults", {search, questions, csrfToken: req.csrfToken() })
+  res.render("searchResults", {search, questions, csrfToken: req.csrfToken()})
+}));
+
+// generates like totals for each answer on page
+router.get("/answers/:answerId(\\d+)/likes", asyncHandler(async (req, res, next)=> {
+  const answerId = req.params.answerId;
+  const likes = await db.Like.findAll({
+    where: {
+      answerId: answerId,
+    }
+  });
+
+  try {
+    const likeStatus = await db.Like.findAll({
+    where: {
+      userId: res.locals.user.id,
+      answerId: answerId
+    }
+  });
+  res.json({likes, likeStatus});
+} catch(error) {
+  console.log('<like loading error>', error);
+}
+
+
+}));
+// creates like
+router.post("/answer/:answerId(\\d+)/likes", asyncHandler(async (req, res, next) => {
+  const answerId = req.params.answerId;
+  const userId = res.locals.user.id;
+  try {
+    await db.Like.create({
+      userId: userId,
+      answerId: answerId,
+    });
+    res.send('Like Succesfully Created');
+  } catch(error) {
+    res.send('Error Creating Like');
+  }
+}));
+
+// deletes like
+router.post("/answer/:answerId(\\d+)/likes", asyncHandler(async (req, res, next) => {
+  const answerId = req.params.answerId;
+  const userId = res.locals.user.id;
+  try {
+    await db.Like.destroy({
+      where:{
+        userId: userId,
+        answerId: answerId,
+      }
+    });
+    res.json('Like Succesfully Deleted');
+  } catch(error) {
+    res.send('Error Deleting Like');
+  }
+}));
+
+// authorizes likes
+router.get("/answers/:answerId(\\d+)/likes", asyncHandler((req, res, next) => {
+  const answerId = req.params.answerId;
+  if (answerId === res.locals.user.id) {
+    res.json({message: 'Success'});
+  } else {
+    res.json({message: 'Failure'});
+  };
 }))
 
 
