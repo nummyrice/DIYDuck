@@ -27,7 +27,7 @@ router.post("/answers", csrfProtection, asyncHandler(async(req, res, next) => {
 
 
 // updates answers on the database
-router.post('/answers/:answerId(\\d+)', csrfProtection, requireAuth, asyncHandler(async (req, res, next) => {
+router.post('/answers/:answerId(\\d+)/edit', csrfProtection, requireAuth, asyncHandler(async (req, res, next) => {
   const answerId = req.params.answerId;
   const userId = res.locals.user.id;
   const questionId = req.body.questionId;

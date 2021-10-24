@@ -258,7 +258,8 @@ a{
   .question_edit,
   .question_delete,
   .post_answer_btn,
-  .answer_edit_btn {
+  .answer_edit_btn,
+  .answer-delete-button {
     background-color:#b92b27;
     color:white;
     font-weight: bolder;

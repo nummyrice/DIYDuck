@@ -47,9 +47,9 @@ router.get('/',csrfProtection, asyncHandler(async function(req, res, next) {
 }));
 
 // search for questions
-router.post("/",csrfProtection, asyncHandler(async (req, res, next) =>{
+router.post("/search",csrfProtection, asyncHandler(async (req, res, next) =>{
   const search = req.body.search
-  console.log(req.body)
+  // console.log(req.body)
   const questions = await db.Question.findAll({
       where: {
         title: {[Op.substring]: `${search}`},
