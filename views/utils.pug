@@ -95,7 +95,7 @@ mixin usersComment(comment, showCommentEditDeleteButtons )
               button(id=`comment_delete_button-${comment.id}` class="comment_delete") Delete Comment
 
 
-mixin questionAnswers(answer)
+mixin questionAnswers(answer, showAddCommentButton)
   div.answer_body
     div(class=' answer_label') Answer
     div.answer_head
@@ -117,4 +117,5 @@ mixin questionAnswers(answer)
                 button(id=`show_comment_for_answer-${answer.id}` class="collapsible show_comment_button")
                   i(id=`show_comment_icon-${answer.id}` class="far fa-comment")
                   span(class="totalcomments")=answer.comments.length
-            button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments
+            if showAddCommentButton && locals.user
+              button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments

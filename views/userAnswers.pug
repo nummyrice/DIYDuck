@@ -24,7 +24,7 @@ block content
                     .answerContainer
                         h1 Answers:
                         each answer in userAnswers
-                            +questionAnswers(answer)
+                            +questionAnswers(answer, false)
                             div(class="commentsDiv" id=`comment_for_answer-${answer.id}`)
                                 each comment in answer.comments
                                     +usersComment(comment, false)

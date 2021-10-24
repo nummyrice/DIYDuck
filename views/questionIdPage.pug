@@ -21,8 +21,7 @@ block content
         div(class="questions")
            div(id="posted-q" class="posted-q")
                 div(class='q_label question_label') Question
-                if locals.autheticated
-                    if locals.user.id === question[0].userId
+                if locals.user && locals.user.id === question[0].userId
                     div(id = 'question_edit_delete_buttons')
                         button(id=`question_edit_button` class="question_edit") Edit Question
                         +editQuestionModal(question[0],categories)
@@ -38,7 +37,7 @@ block content
                 p(class="question")=question[0].content
                 if question[0].answers.length > 0
                 each answer in question[0].answers
-                    +questionAnswers(answer)
+                    +questionAnswers(answer, true)
                     +addCommentModal(answer)
                     div(class="commentsDiv" id=`comment_for_answer-${answer.id}`)
                         each comment in answer.comments

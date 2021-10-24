@@ -176,7 +176,7 @@ a{
 }
 
 
-.comment_cancelButton,.comment_submitButton {
+.comment_cancelButton,.comment_submitButton,.edit_comment_cancelButton,.edit_comment_submitButton {
     display: inline-block;
     padding: 14px 20px;
     background-color:#b92b27;
@@ -252,7 +252,7 @@ a{
     justify-content: right;
   }
 
-  .comment_edit, .comment_delete,.comment-creation-button{
+  .comment_edit, .comment_delete,.comment-creation-button,.question_edit,.question_delete{
     background-color:#b92b27;
     color:white;
     font-weight: bolder;
