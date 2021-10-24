@@ -130,212 +130,113 @@ module.exports = {
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 11,
+    questionId: 1,
     userId: 1,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 12,
+    questionId: 2,
     userId: 1,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 13,
+    questionId: 3,
     userId: 1,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 14,
+    questionId: 4,
     userId: 1,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 15,
+    questionId: 5,
     userId: 1,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 16,
+    questionId: 6,
     userId: 1,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 17,
+    questionId: 7,
     userId: 1,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 18,
+    questionId: 8,
     userId: 1,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 19,
+    questionId: 9,
     userId: 1,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 20,
+    questionId: 10,
     userId: 1,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 21,
+    questionId: 1,
     userId: 1,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 22,
+    questionId: 2,
     userId: 2,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 23,
+    questionId: 3,
     userId: 2,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 24,
+    questionId: 4,
     userId: 2,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 25,
+    questionId: 5,
     userId: 2,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 26,
+    questionId: 6,
     userId: 1,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 27,
+    questionId: 7,
     userId: 1,
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {
     answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 28,
+    questionId: 8,
     userId: 2,
     createdAt: new Date(),
     updatedAt: new Date(),
-  } , {
-    answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 29,
-    userId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  , {
-    answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 30,
-    userId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }
-  , {
-    answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 31,
-    userId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }
-  , {
-    answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 32,
-    userId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }
-  , {
-    answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 33,
-    userId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }
-  , {
-    answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 95,
-    userId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }
-  , {
-    answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 35,
-    userId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }
-  , {
-    answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 85,
-    userId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }, {
-    answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 75,
-    userId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }, {
-    answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 65,
-    userId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }, {
-    answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 60,
-    userId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }, {
-    answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 50,
-    userId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }, {
-    answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 40,
-    userId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }, {
-    answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 44,
-    userId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }, {
-    answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed rutrum condimentum nibh eu suscipit. Proin tempus.',
-    questionId: 100,
-    userId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }
-
-], {});
+  }], {});
   },
 
   down: (queryInterface, Sequelize) => {
