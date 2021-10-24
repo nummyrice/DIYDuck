@@ -10,6 +10,29 @@ mixin addCommentModal(answer)
                 button(class='comment_cancelButton' type='button' id=`comment_cancelButton-${answer.id}`) Cancel
                 button(class='comment_submitButton' type='submit') Submit
 
+mixin addQuestionModal(question)
+    div(id=`commentModal-${question.id}` class='comment_modal')
+        form(class='comment_modal_content' action=`/comments/${question.id}` method='post')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            div(class='comment_container')
+            label(for='comment' class="comment_label") Type your comment
+            br
+            textarea(class="comment_textarea" name='comment' required)
+            div(class='comment_eraser')
+                button(class='comment_cancelButton' type='button' id=`comment_cancelButton-${question.id}`) Cancel
+                button(class='comment_submitButton' type='submit') Submit
+
+mixin editAnswerModal(answer)
+    div(id=`editAnswerModal-${answer.id}` class='answer_modal')
+        form(class='answer_modal_content' action=`/answer/${answer.id}/edit` method='post')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            div(class='answer_container')
+            label(for='answer' class="answer_label") Type your answer
+            br
+            textarea(class="answer_textarea" name='answer' required)=answer.answer
+            div(class='answer_eraser')
+                button(class='edit_answer_cancelButton' type='button' id=`edit_answer_cancelButton-${answer.id}`) Cancel
+                button(class='edit_answer_submitButton' type='submit') Submit
 
 mixin editCommentModal(comment)
     div(id=`editCommentModal-${comment.id}` class='comment_modal')
@@ -96,7 +119,7 @@ mixin usersComment(comment, showCommentEditDeleteButtons )
 
 
 mixin questionAnswers(answer, showAddCommentButton)
-  div.answer_body
+  div(class="answer_body" id=`answer_body-${answer.id}`)
     div(class=' answer_label') Answer
     div.answer_head
       a.answer_a(href=`/users/${answer.userId}`)
@@ -119,3 +142,5 @@ mixin questionAnswers(answer, showAddCommentButton)
                   span(class="totalcomments")=answer.comments.length
             if showAddCommentButton && locals.user
               button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments
+            if locals.user.id === answer.userId
+              button(id=`answer_delete_button-${answer.id}` class="answer-delete-button" type='button') Delete Answer

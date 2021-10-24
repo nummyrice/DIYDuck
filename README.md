@@ -5,6 +5,9 @@ DIY Duck is an app that allows users to ask and answer questions pertaining to t
 
 # How to start development environment
 
+- Open the repo in VSCode
+- In the terminal, type in npm start, hit enter
+- go to localhost:8080
 
 # Technologies Used
 
@@ -12,21 +15,10 @@ DIY Duck is an app that allows users to ask and answer questions pertaining to t
 - Express
 - Pug
 - CSS
+- Postgresql
 - Sequelize
 - Postbird
 - Heroku
-
-# Sequelize Quick Database Access
-``` Use these commands ```
-* Be sure to drop any database that you have. Do not drop your user though.
-
-* npx dotenv sequelize-cli db:create
-
-* npx dotenv sequelize-cli db:migrate
-
-* npx dotenv sequelize-cli db:seed:all
-
-``` it is best to drop the entire database if you want to remigrate so that IDs for various entries are properly associated in the seed data file ```
 
 # Live Site
 
@@ -38,10 +30,65 @@ Go here: https://github.com/nummyrice/DIYDuck/wiki
 
 # Best Features
 
-discuss two best features
+## Search Bar
+- We created a function seach bar one can use to look for specific questions, by querying the database.
+- You can search a full question, or individual keywords to get more results.
+
+## AJAX
+- Ajax was used to create modals for adding and editing questions.
+- It was also used to add functionality to our buttons.
 
 # Challenges
 
-- We had a difficult time trying to add functionality to the category column. Our plan was to have the buttons filter out questions when clicked, and only show the questions in the selected category. We ran into a lot of bugs with this feature, especially with the routes. To resolve this issue, we all came together and walked through the code, put our heads together, and tried out each other's advice until we found a solution that worked.
+- It was a challenge working on components that would not negatively interact with others. It was difficult to think modularly and ensure that what everyone was working on could be “plugged into” our project and work correctly.
 
 # Best Code
+
+## Pug Mixins
+- Pug was essential to making elements and adding functionality to our page, while keeping the code modular.
+
+```pug
+mixin generateCategories(category)
+  a(class='categoryName' href=`/categories/${category.id}`) #{category.name}
+
+mixin usersQuestion(question)
+  div(id="posted-q" class="posted-q")
+    div(class='q_label question_label') Question
+    div(class="q_header")
+      a(href=`/users/${question.userId}`)
+        img(class='q_profile_photo' id=`${question.userId}` src=question.user.profilePhoto)
+      div(class='q_header_info')
+        div(class="q_username")=question.user.name
+        div(class="q_profession_and_date")
+          div(class="profession")=question.user.profession
+          div(class='date_updated')=question.updatedAt
+    span(class="q_title")
+        a(class="questionLink" href=`/questions/${question.id}`)=question.title
+    p(class="question")=question.content
+```
+
+## Nested Database Query
+
+Nick's nested database queries 10 questions for the home page, and then the user info for those ten questions. It also shows one answer for those questions along with user info, and one comment with the comment's user info to show up as well.
+
+```js
+router.get('/',csrfProtection, asyncHandler(async function(req, res, next) {
+  const categories = await db.Category.findAll()
+
+  // get 10 most recent questions for home page
+  const questions = await db.Question.findAll(
+    {
+    order: [['updatedAt', 'DESC']],
+    limit: 10,
+    include: [
+      {model: db.User,
+      as: 'user'},
+      {model: db.Answer,
+      as:'answers',
+      limit: 1,
+      order: [['updatedAt', 'DESC']],
+    include: [{model: db.User, as: 'user'},
+      {model: db.Comment, as:'comments', include:[{model: db.User,as: 'user' }]}],
+  }],
+  });
+```
