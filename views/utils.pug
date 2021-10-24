@@ -96,7 +96,7 @@ mixin usersComment(comment, showCommentEditDeleteButtons )
 
 
 mixin questionAnswers(answer, showAddCommentButton)
-  div.answer_body
+  div(class = "answer_body" id = `answer_body-${answer.id}`)
     div(class=' answer_label') Answer
     div.answer_head
       a.answer_a(href=`/users/${answer.userId}`)
@@ -119,3 +119,5 @@ mixin questionAnswers(answer, showAddCommentButton)
                   span(class="totalcomments")=answer.comments.length
             if showAddCommentButton && locals.user
               button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments
+              button(id=`answer_edit_button-${answer.id}` class="answer-edit-button" type=submit) Edit Answer
+              button(id=`answer_delete_button-${answer.id}` class="answer-delete-button" type=submit) Delete Answer
