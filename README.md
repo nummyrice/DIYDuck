@@ -67,6 +67,74 @@ mixin usersQuestion(question)
     p(class="question")=question.content
 ```
 
+## Edit Comments Modal
+
+# PUG Mixin
+
+mixin addCommentModal(answer)
+    div(id=`commentModal-${answer.id}` class='comment_modal')
+        form(class='comment_modal_content' action=`/comments/${answer.id}` method='post')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            div(class='comment_container')
+            label(for='comment' class="comment_label") Type your comment
+            br
+            textarea(class="comment_textarea" name='comment' required)
+            div(class='comment_eraser')
+                button(class='comment_cancelButton' type='button' id=`comment_cancelButton-${answer.id}`) Cancel
+                button(class='comment_submitButton' type='submit') Submit
+
+# JavaScript
+
+const addComments = document.querySelectorAll('.comment-creation-button')
+if(addComments){
+    addComments.forEach((element) => {
+        element.addEventListener('click', async (e) => {
+
+            const id = e.target.id.split('-')[1]
+            const modal = document.getElementById(`commentModal-${id}`)
+            modal.style.display='block';
+        })
+    })}
+
+const cancelComments = document.querySelectorAll('.comment_cancelButton')
+if(cancelComments){
+    cancelComments.forEach((element) => {
+        element.addEventListener('click', async (e) => {
+
+            const id = e.target.id.split('-')[1]
+            const modal = document.getElementById(`commentModal-${id}`)
+            modal.style.display='none';
+        })
+    })}
+
+# Route
+
+router.post('/comments/:answerId(\\d+)',csrfProtection, asyncHandler(async (req, res) => {
+
+    //   console.log('printing Body', req.body)
+    //   console.log('Printing User', res.locals.user.id)
+
+    const answerId = req.params.answerId
+
+      const {
+        comment
+      } = req.body;
+
+      const comments = await db.Comment.create({
+        comment : comment,
+        answerId : answerId,
+        userId : res.locals.user.id
+      });
+
+      const answer = await db.Answer.findByPk(answerId);
+      let  questionId = answer.questionId
+
+        res.redirect(`/questions/${questionId}`);
+
+    }));
+
+
+
 ## Nested Database Query
 
 Nick's nested database queries 10 questions for the home page, and then the user info for those ten questions. It also shows one answer for those questions along with user info, and one comment with the comment's user info to show up as well.

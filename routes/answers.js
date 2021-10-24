@@ -5,10 +5,6 @@ const {check, validationResult} = require('express-validator')
 const db = require('../db/models');
 
 
-
-
-
-
 router.delete('/answers/:id(\\d+)', async (req,res) => {
     const answerId = req.params.id
     const answer = await db.Answer.findByPk(answerId)
@@ -22,6 +18,4 @@ router.delete('/answers/:id(\\d+)', async (req,res) => {
 
 
 
-
-
-  module.exports = router
+module.exports = router
