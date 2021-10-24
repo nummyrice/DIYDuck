@@ -157,6 +157,7 @@ a{
 .commentsDiv{
     display: none;
     padding-left: 30px;
+    padding-bottom: 30px;
     width:fit-content;
 }
 .commentDiv{
@@ -175,7 +176,7 @@ a{
 }
 
 
-.comment_cancelButton,.comment_submitButton {
+.comment_cancelButton,.comment_submitButton,.edit_comment_cancelButton,.edit_comment_submitButton {
     display: inline-block;
     padding: 14px 20px;
     background-color:#b92b27;
@@ -240,18 +241,20 @@ a{
     font-size:20px;
   }
 
-  .comment-creation-button{
-    display: inline-block;
-    padding: 14px 20px;
-    background-color:#b92b27;
-    margin: 10px;
-    color:white;
-    font-weight: bolder;
-    border-radius: 1em;
-  }
+
 
   #question_edit_delete_buttons{
       margin-bottom: 10px;
   }
 
+  .comment_edit_delete_buttons{
+    display: flex;
+    justify-content: right;
+  }
 
+  .comment_edit, .comment_delete,.comment-creation-button,.question_edit,.question_delete{
+    background-color:#b92b27;
+    color:white;
+    font-weight: bolder;
+    border-radius: 1em;
+  }

@@ -10,7 +10,9 @@ padding-top:10px ;
     border: solid 1px #c3c8ca;
     border-radius: 10px;
     width: 590px;
-    background-color:#f7f7f8
+    background-color:#f7f7f8;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
 }
 .answer_head {
     display: flex;

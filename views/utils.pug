@@ -72,7 +72,7 @@ mixin usersQuestion(question)
     p(class="question")=question.content
 
 
-mixin usersComment(comment)
+mixin usersComment(comment, showCommentEditDeleteButtons )
     div(id=`commentDiv-${comment.id}` class="commentDiv")
         div
         div( class='q_label comment_label') Comments
@@ -88,10 +88,14 @@ mixin usersComment(comment)
                 div(class='date_updated comment_date_updated')=comment.updatedAt
                 div
                 p(class="question comment")=comment.comment
+        if showCommentEditDeleteButtons && locals.user && locals.user.id === comment.userId
+          div(class='comment_edit_delete_buttons' id=`comment_edit_delete_buttons-${comment.id}`)
+              button(id=`comment_edit_button-${comment.id}` class="comment_edit") Edit Comment
+              +editCommentModal(comment)
+              button(id=`comment_delete_button-${comment.id}` class="comment_delete") Delete Comment
 
 
-
-mixin questionAnswers(answer)
+mixin questionAnswers(answer, showAddCommentButton)
   div.answer_body
     div(class=' answer_label') Answer
     div.answer_head
@@ -108,8 +112,10 @@ mixin questionAnswers(answer)
         p.question=answer.answer
         div(class="like_comment_buttons")
             button(id="likeButton")
-                i(class="far fa-heart")
+              i(class="far fa-heart")
             if answer.comments.length
                 button(id=`show_comment_for_answer-${answer.id}` class="collapsible show_comment_button")
-                    i(id=`show_comment_icon-${answer.id}` class="far fa-comment")
-                    span(class="totalcomments")=answer.comments.length
+                  i(id=`show_comment_icon-${answer.id}` class="far fa-comment")
+                  span(class="totalcomments")=answer.comments.length
+            if showAddCommentButton && locals.user
+              button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments
