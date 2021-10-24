@@ -124,13 +124,13 @@ mixin questionAnswers(answer, showAddCommentButton, questionId)
         p.question=answer.answer
         if locals.user && showAddCommentButton && locals.user.id === answer.userId
           div(class="edit_answer_block")
-
             form(action=`/answers/${answer.id}/edit` method='post')
               input(type='hidden' name='questionId' value=questionId)
               input(type='hidden' name='_csrf' value=csrfToken)
               label(for='answerEditText' class="post_answer_label") Edit your answer
               input(type='textArea' name='answerEditText' class='post_answer_textarea')
               button(class="answer_edit_btn" type='submit') Submit
+          button(id=`answer_delete_button-${answer.id}` class="answer-delete-button" type='button') Delete Answer
         div(class="answer_buttons like_comment_buttons")
           div(class='like_field' id=`likeNum_${answer.id}`)
             i(class="far fa-heart" id=`heart_${answer.id}`)
@@ -141,4 +141,3 @@ mixin questionAnswers(answer, showAddCommentButton, questionId)
               span(class="totalcomments")=answer.comments.length
           if showAddCommentButton && locals.user
             button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments
-            button(id=`answer_delete_button-${answer.id}` class="answer-delete-button" type='button') Delete Answer
