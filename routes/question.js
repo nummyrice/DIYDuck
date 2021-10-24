@@ -28,28 +28,39 @@ router.post('/new',csrfProtection, asyncHandler(async (req, res) => {
 router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req,res) => {
     const questionId = req.params.id
 
-    const question = await db.Question.findAll(
-        {
+    const question = await db.Question.findAll({
         order: [['updatedAt', 'DESC']],
         where:{
-            id : questionId
+          id : questionId
         },
-        include: [
-          {model: db.User,
-          as: 'user'},
-          {model: db.Answer,
+        include: [{
+          model: db.User,
+          as: 'user'}, {
+          model: db.Answer,
           as:'answers',
           order: [['updatedAt', 'DESC']],
-        include: [{model: db.User, as: 'user'},
-          {model: db.Comment, as:'comments', include:[{model: db.User,as: 'user' }]}],
-      }],
+          include: [{
+            model: db.User,
+            as: 'user'}, {
+            model: db.Like,
+            as: 'likes',
+            include: [{
+              model: db.User,
+              as: 'user',
+            }]
+            }, {
+            model: db.Comment,
+            as:'comments',
+            include:[{
+                model: db.
+                User,as: 'user'
+            }]
+          }],
+        }],
       });
 
     //   console.log("////////////////////////////")
     //   console.log(question[0].answers)
-
-
-
     const categories = await db.Category.findAll();
 
       res.render( 'questionIdPage', {

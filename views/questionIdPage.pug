@@ -37,7 +37,7 @@ block content
                 p(class="question")=question[0].content
                 if question[0].answers.length > 0
                 each answer in question[0].answers
-                    +questionAnswers(answer, true)
+                    +questionAnswers(answer, true, question[0].id)
                     +addCommentModal(answer)
                     div(class="commentsDiv" id=`comment_for_answer-${answer.id}`)
                         each comment in answer.comments

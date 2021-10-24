@@ -13,6 +13,7 @@ html
       a(class='logo' href='/') DIY Duck
       div
         form(method="post" action="/")
+          input(type='hidden' name='_csrf' value=csrfToken)
           input(class='searchBar' type='text' placeholder="Search your question" name="search")
       if locals.authenticated
           span(class='welcome') Welcome #{user.name}!

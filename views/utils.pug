@@ -70,6 +70,17 @@ mixin usersQuestion(question)
     span(class="q_title")
         a(class="questionLink" href=`/questions/${question.id}`)=question.title
     p(class="question")=question.content
+    if locals.authenticated
+      div(class="post_answer_block")
+      form(action="/answers" method="POST")
+        input(type='hidden' name='_csrf' value=csrfToken)
+        input(type='hidden' name='questionId' value=question.id)
+        label(for='answerText' class="post_answer_label") Have an answer?
+        input(type=textarea name='answerText' class="post_answer_textarea")
+        button(type="submit" class="post_answer_btn") Answer
+
+
+
 
 
 mixin usersComment(comment, showCommentEditDeleteButtons )
@@ -95,7 +106,8 @@ mixin usersComment(comment, showCommentEditDeleteButtons )
               button(id=`comment_delete_button-${comment.id}` class="comment_delete") Delete Comment
 
 
-mixin questionAnswers(answer, showAddCommentButton)
+
+mixin questionAnswers(answer, showAddCommentButton, questionId)
   div(class = "answer_body" id = `answer_body-${answer.id}`)
     div(class=' answer_label') Answer
     div.answer_head
@@ -110,27 +122,27 @@ mixin questionAnswers(answer, showAddCommentButton)
         div
         div(class='answer_date_updated')=answer.updatedAt
         p.question=answer.answer
-<<<<<<< HEAD
         div.answer_buttons
           div(class='like_field' id=`likeNum_${answer.id}`)
             i(class="far fa-heart" id=`heart_${answer.id}`)
             span(class="like_count" id=`count_${answer.id}`) 0
-          if answer.comments.length
-              button(id=`show_comment_for_answer-${answer.id}` class="collapsible show_comment_button")
-                i(id=`show_comment_icon-${answer.id}` class="far fa-comment")
-                span(class="totalcomments")=answer.comments.length
-          if showAddCommentButton && locals.user
-            button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments
-=======
-        div(class="like_comment_buttons")
-            button(id="likeButton")
-              i(class="far fa-heart")
-            if answer.comments.length
+             if answer.comments.length
                 button(id=`show_comment_for_answer-${answer.id}` class="collapsible show_comment_button")
                   i(id=`show_comment_icon-${answer.id}` class="far fa-comment")
                   span(class="totalcomments")=answer.comments.length
             if showAddCommentButton && locals.user
               button(id=`comment_creation_button-${answer.id}` class="comment-creation-button" type=submit) Add Comments
+        div(class="like_comment_buttons")
+            button(id="likeButton")
+              i(class="far fa-heart")
+
             if locals.user && locals.user.id === answer.userId
-              button(id=`answer_delete_button-${answer.id}` class="answer-delete-button" type='button') Delete Answer
->>>>>>> e5ef0cb1ecc916396f77afea109bf02c9e004c8c
+        if locals.authenticated && (locals.user.id === answer.userId)
+          div(class="edit_answer_block")
+            button(id=`answer_delete_button-${answer.id}` class="answer-delete-button" type='button') Delete Answer
+            form(action=`/answers/${answer.id}` method='post')
+              input(type='hidden' name='questionId' value=questionId)
+              input(type='hidden' name='_csrf' value=csrfToken)
+              label(for='answerEditText' class="post_answer_label") Edit your answer
+              input(type='textArea' name='answerEditText' class='post_answer_textarea')
+              button(class="answer_edit_btn" type='submit') Submit
