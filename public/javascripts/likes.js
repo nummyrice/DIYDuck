@@ -29,33 +29,46 @@ window.addEventListener("DOMContentLoaded", event => {
     likeHeart.forEach((element) => {
         const answerId = element.id.slice(6);
         const likeCount = document.querySelector(`#count_${answerId}`);
-        console.log();
+        // console.log();
         element.addEventListener('click', async (event) => {
-            const res = await fetch(`/answers/${answerId}/likes`, {
-                method: 'GET',
-            });
-            const likeAuth = await res.json();
-            if (likeAuth.message === 'Success') {
+            // const res = await fetch(`/answers/${answerId}/likes/auth`, {
+            //     method: 'GET',
+            // });
+            // const likeAuth = await res.json();
+            // console.log(likeAuth);
+            // if (likeAuth.message === 'Success') {
+                // console.log(event.target.classList.contains('far'));
             if (event.target.classList.contains('far')) {
                 //add a like to the database
                 const addLike = await fetch(`/answers/${answerId}/likes`, {
                     method: 'POST',
                 });
-                // increment like count on page
-                likeCount.innerText = parseInt(likeCount.innerText, 10) + 1;
-
+                const result = await addLike.json();
+                if (result.message === 'Success') {
+                    // increment like count on page
+                    likeCount.innerText = parseInt(likeCount.innerText, 10) + 1;
+                    event.target.classList.remove('far');
+                    event.target.classList.add('fas');
+                    console.log('liked');
+                };
             } else if(event.target.classList.contains('fas')) {
                 //delete like from database
                 const deleteLike = await fetch(`/answers/${answerId}/likes`, {
                     method: 'DELETE',
                 });
-                // decrement like count on page
-                likeCount.innerText = parseInt(likeCount.innerText, 10) - 1;
+                const result = await deleteLike.json();
+                if (result.message === 'Success') {
+                    // decrement like count on page
+                    likeCount.innerText = parseInt(likeCount.innerText, 10) - 1;
+                    event.target.classList.remove('fas');
+                    event.target.classList.add('far');
+                    console.log('unliked');
 
+                }
             };
-        } else if (likeAuth.message = 'Failure') {
+        // } else if (likeAuth.message = 'Failure') {
 
-        }
+        // }
         });
     });
 });

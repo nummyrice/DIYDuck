@@ -70,6 +70,17 @@ mixin usersQuestion(question)
     span(class="q_title")
         a(class="questionLink" href=`/questions/${question.id}`)=question.title
     p(class="question")=question.content
+    if locals.authenticated
+      div(class="post_answer_block")
+      form(action="/answers" method="POST")
+        input(type='hidden' name='_csrf' value=csrfToken)
+        input(type='hidden' name='questionId' value=question.id)
+        label(for='answerText' class="post_answer_label") Have an answer?
+        input(type=textarea name='answerText' class="post_answer_textarea")
+        button(type="submit" class="post_answer_btn") Answer
+
+
+
 
 
 mixin usersComment(comment, showCommentEditDeleteButtons )

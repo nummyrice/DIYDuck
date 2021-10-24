@@ -174,3 +174,11 @@ input{
   height: 50px;
   width: 50px;
 }
+
+label.post_answer_label {
+  display: inline-block;
+  width: 300px;
+  text-align: left;
+  font-weight: bold;
+  font-size:15px;
+}

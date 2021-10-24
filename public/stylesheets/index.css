@@ -252,9 +252,15 @@ a{
     justify-content: right;
   }
 
-  .comment_edit, .comment_delete,.comment-creation-button,.question_edit,.question_delete{
+  .comment_edit,
+  .comment_delete,
+  .comment-creation-button,
+  .question_edit,
+  .question_delete,
+  .post_answer_btn {
     background-color:#b92b27;
     color:white;
     font-weight: bolder;
     border-radius: 1em;
+    font-size: 15px;
   }

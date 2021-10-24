@@ -11,12 +11,14 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const questionRouter = require('./routes/question')
 const categoryRouter = require('./routes/categories')
-const commentRouter = require('./routes/comments')
-const { restoreUser } = require('./auth');
+const commentRouter = require('./routes/comments');
+const answersRouter = require('./routes/answers');
+const { restoreUser, requireAuth } = require('./auth');
 
 
 
-const { sessionSecret } = require('./config')
+const { sessionSecret } = require('./config');
+// const { like } = require('sequelize/types/lib/operators');
 
 const app = express();
 
@@ -57,8 +59,9 @@ app.use(restoreUser);
 app.use('/', indexRouter);
 app.use(usersRouter);
 app.use('/questions', questionRouter);
-app.use(categoryRouter)
-app.use(commentRouter)
+app.use(categoryRouter);
+app.use(commentRouter);
+app.use(answersRouter);
 
 // catch 404 and forward to error handler
 app.use(errorHandler = (req,res,next) => {
