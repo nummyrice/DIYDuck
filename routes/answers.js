@@ -40,22 +40,23 @@ router.post('/answers/:answerId(\\d+)/edit', csrfProtection, requireAuth, asyncH
           id: answerId,
         }
       })
+  console.log('////////////////////')
+  console.log('Successfully updated answer')
   } catch (error) {
     console.log('//////////////////')
     console.log('Error updating answer')
-    if (questionId) {
-      res.redirect(`/questions/${questionId}`);
-    }
-    res.redirect(`/users/${userId}/answers`);
-  }
+    // if (questionId) {
+    //   res.redirect(`/questions/${questionId}`);
+    // }
+    // res.redirect(`/users/${userId}/answers`);
+  // }
   // if update is succesfully,  this route will be taken
-  console.log('////////////////////')
-  console.log('Successfully updated answer')
+  }
 
   if (questionId) {
     res.redirect(`/questions/${questionId}`);
   }
-  res.redirect(`/users/${userId}/answers`);
+  // res.redirect(`/users/${userId}/answers`);
 }))
 
 // deletes associated answer
